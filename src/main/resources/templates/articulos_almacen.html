@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Catalogo de Articulos</title>
+    </head>
+    <body>
+        <h1>Articulos del Almacen</h1>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/AgregarArticulo}">Dar de alta art&iacute;culo</a>
+        <div th:if="${artsAlmacen != null and !artsAlmacen.empty}">
+            <table border="1">
+                <tr>
+                    <th>Tipo de art&iacute;culo</th>
+                    <th>Clave del art&iacute;culo</th>
+                    <th>Descripci&oacute;n del art&iacute;culo</th>
+                    <th>Cantidad m&aacute;xima del art&iacute;culo</th>
+                    <th>Cantidad m&iacute;nima del art&iacute;culo</th>
+                    <th>Estatus de vigencia</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">Modificar datos</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar definitivamente</th>
+                </tr>
+                <tr th:each="vtctlgartsAlmacen : ${artsAlmacen}"><!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
+                    <td th:text="${vtctlgartsAlmacen.ctipart}">Muestra el tipo de art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen.ccvartl}">Muestra la clave del art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen.cdescrip}">Muestra la descripci&oacute;n del art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen.nmaximo}">Muestra la cantidad m&aacute;xima del art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen.nminimo}">Muestra la Cantidad m&iacute;nima del art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen.cvigent}">Muestra las siglas del art&iacute;culo</td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/AgregarArticulo/} + ${vtctlgartsAlmacen.ccvartl}" th:text="Editar"/></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/Eliminar(ccvartl=${vtctlgartsAlmacen.ccvartl})}" th:text="Eliminar"/></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${artsAlmacen == null or artsAlmacen.empty}">
+            La lista de articulos se encuentra vacia o a ocurrido un error en la conexi&oacute;n
+            
+             <table border="1">
+                <tr>
+                    <th>Tipo de art&iacute;culo</th>
+                    <th>Clave del art&iacute;culo</th>
+                    <th>Descripci&oacute;n del art&iacute;culo</th>
+                    <th>Cantidad m&aacute;xima del art&iacute;culo</th>
+                    <th>Cantidad m&iacute;nima del art&iacute;culo</th>
+                    <th>Estatus de vigencia</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">Modificar datos</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar definitivamente</th>
+                </tr>
+                <tr th:each="vtctlgartsAlmacen2 : ${artsAlmacen2}"><!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
+                    <td th:text="${vtctlgartsAlmacen2.ctipart}">Muestra el tipo de art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen2.ccvartl}">Muestra la clave del art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen2.cdescrip}">Muestra la descripci&oacute;n del art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen2.nmaximo}">Muestra la cantidad m&aacute;xima del art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen2.nminimo}">Muestra la Cantidad m&iacute;nima del art&iacute;culo</td>
+                    <td th:text="${vtctlgartsAlmacen2.cvigent}">Muestra las siglas del art&iacute;culo</td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/AgregarArticulo/} + ${vtctlgartsAlmacen2.ccvartl}" th:text="Editar"/></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/Eliminar(ccvartl=${vtctlgartsAlmacen2.ccvartl})}" th:text="Eliminar"/></td>
+                </tr>
+            </table>
+            
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
