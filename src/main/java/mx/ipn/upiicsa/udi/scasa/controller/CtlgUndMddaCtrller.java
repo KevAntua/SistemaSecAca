@@ -18,7 +18,7 @@ public class CtlgUndMddaCtrller {
     @Autowired
     private ICtlgUndMedService ctlgUndMedService;
     
-     @GetMapping("/Medidas")
+    @GetMapping("/Medidas")
     public String ctlgUndMedidaModel(Model model){
         var unidadesMedida = ctlgUndMedService.listarUndMedida();
         log.info("Ejecutando controlador para el catalogo de las unidades de medida");

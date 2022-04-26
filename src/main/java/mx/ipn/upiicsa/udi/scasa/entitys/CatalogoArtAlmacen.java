@@ -15,19 +15,24 @@ public class CatalogoArtAlmacen implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    @NotEmpty 
+    //@NotEmpty 
     private char ctipart;  // Tipo de artículo: P=Papelería, C=Cafetería, T=Computó
     
     @Id
+    
     @NotEmpty
     private String ccvartl;   // Clave del artículo
+    
     @NotEmpty 
     private String cdescrip;  //Descripción
+    
     //@NotEmpty 
     private int nmaximo;   // Cantidad máximo del artículo en existencia
+    
     //@NotEmpty 
     private int nminimo;   // Cantidad mínima del artículo en existencia
-    @NotEmpty 
+    
+    //@NotEmpty
     private char cvigent;   // Indica si se encuentra o no vigente
 
     //ALTER TABLE CARTCLS ADD CONSTRAINT PK_ARTICLS

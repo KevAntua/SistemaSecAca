@@ -4,5 +4,6 @@ import mx.ipn.upiicsa.udi.scasa.entitys.CtrlUsuarios;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ICtlgUsuariosDao extends JpaRepository<CtrlUsuarios, String> {
-    //CtrlUsuarios findByUsername(String username);
+
+    CtrlUsuarios findByUsername(String username);
 }

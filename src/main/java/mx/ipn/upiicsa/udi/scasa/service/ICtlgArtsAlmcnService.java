@@ -7,9 +7,9 @@ public interface ICtlgArtsAlmcnService {
 
     public List<CatalogoArtAlmacen> listarArtsAlmacen();
 
-    public void guardarArtAlmacen(CatalogoArtAlmacen artalmacen);
+    public void guardarArtAlmacen(CatalogoArtAlmacen catalogoArtAlmacen);
 
-    public void eliminarArtAlmacen(CatalogoArtAlmacen artalmacen);
+    public void eliminarArtAlmacen(CatalogoArtAlmacen catalogoArtAlmacen);
 
-    public CatalogoArtAlmacen artAlmcnSeleccionado(CatalogoArtAlmacen artalmacen);
+    public CatalogoArtAlmacen artAlmcnSeleccionado(CatalogoArtAlmacen catalogoArtAlmacen);
 }

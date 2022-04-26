@@ -6,7 +6,7 @@
     </head>
     <body>
         <<header th:replace="layout/plantilla :: header"/>
-        <div th:if="${catalogoAreas != null and !catalogoAreas.empty}">
+        <div th:if="${catalogoAreas != null}"> <!--and !catalogoAreas.empty !tblUserList.isEmpty()-->
             <table border="1">
                 <tr>
                     <th>Id del &aacute;rea</th>
@@ -31,8 +31,7 @@
                     <!--<td><a th:href="@{/Areas/} + ${vtctlgareas.nidarea}" th:text="Editar"/></td>-->
                 </tr>
             </table>
-        </div>
-        <div th:if="${catalogoAreas == null or catalogoAreas.empty}">
+        <div th:if="${catalogoAreas == null}"> <!--or catalogoAreas.empty or areaseleccionada == null or areaseleccionada.empty-->
             La lista de personas se encuentra vacia o a ocurrido un error en la conexi&oacute;n    
         </div>
         <footer th:replace="layout/plantilla :: footer"/>

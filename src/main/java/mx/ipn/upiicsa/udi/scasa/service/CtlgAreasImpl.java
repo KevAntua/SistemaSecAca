@@ -24,5 +24,11 @@ public class CtlgAreasImpl implements ICtlgAreasService{
     public CatalogoAreas areaSeleccionada(CatalogoAreas ctlgAreas){
     return ctlgAreasDao.findById(ctlgAreas.getNidarea()).orElse(null);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public CatalogoAreas areaSeleccionada(Integer ctlgAreas) {
+    return ctlgAreasDao.findById(ctlgAreas).orElse(null);
+    }
     
 }

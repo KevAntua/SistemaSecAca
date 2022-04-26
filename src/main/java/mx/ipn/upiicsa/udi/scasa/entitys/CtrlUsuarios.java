@@ -1,6 +1,7 @@
 package mx.ipn.upiicsa.udi.scasa.entitys;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class CtrlUsuarios implements Serializable {
     @NotEmpty
     private String cpasswr; // Password
     @NotEmpty
-    private String cnombre; // Nombre(s) del usuario
+    private String username; // Nombre(s) del usuario
     @NotEmpty
     private String cpriape; // Primer apellido
     private String csegape; // Segundo apellido
@@ -26,9 +27,8 @@ public class CtrlUsuarios implements Serializable {
     @NotEmpty
     private char cvigent;   // Indica si el registro se encuentra S=Vigente o N=No vigente
     
-    private int nidnvl;     //Indica el id del nivel de rol que tiene el usuario
-    /*@OneToMany
-    @JoinColumn(name = "nidnvl")
-    private CatalogoNvlsRoles rol;*/ 
+    @OneToMany
+    @JoinColumn(name = "ccveusu")
+    private List<CatalogoNvlsRoles> roles;
 
 }

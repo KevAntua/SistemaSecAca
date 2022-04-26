@@ -11,30 +11,30 @@ import org.springframework.transaction.annotation.Transactional;
 public class CtlgArtsAlmcnImpl implements ICtlgArtsAlmcnService {
 
     @Autowired
-    private ICtlgArtsAlmacenDao ctlgArtsAlmcnDao;
+    private ICtlgArtsAlmacenDao iCtlgArtsAlmacenDao;
 
     @Override
     @Transactional(readOnly = true)
     public List<CatalogoArtAlmacen> listarArtsAlmacen() {
-        return (List<CatalogoArtAlmacen>) ctlgArtsAlmcnDao.findAll();
+        return (List<CatalogoArtAlmacen>) iCtlgArtsAlmacenDao.findAll();
     }
 
     @Override
     @Transactional
-    public void guardarArtAlmacen(CatalogoArtAlmacen artalmacen) {
-        ctlgArtsAlmcnDao.save(artalmacen);
+    public void guardarArtAlmacen(CatalogoArtAlmacen catalogoArtAlmacen) {
+        iCtlgArtsAlmacenDao.save(catalogoArtAlmacen);
     }
 
     @Override
     @Transactional
-    public void eliminarArtAlmacen(CatalogoArtAlmacen artalmacen) {
-        ctlgArtsAlmcnDao.delete(artalmacen);
+    public void eliminarArtAlmacen(CatalogoArtAlmacen catalogoArtAlmacen) {
+        iCtlgArtsAlmacenDao.delete(catalogoArtAlmacen);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public CatalogoArtAlmacen artAlmcnSeleccionado(CatalogoArtAlmacen artalmacen) {
-        return ctlgArtsAlmcnDao.findById(artalmacen.getCcvartl()).orElse(null);
+    public CatalogoArtAlmacen artAlmcnSeleccionado(CatalogoArtAlmacen catalogoArtAlmacen) {
+        return iCtlgArtsAlmacenDao.findById(catalogoArtAlmacen.getCcvartl()).orElse(null);
     }
 
 }

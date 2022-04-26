@@ -4,8 +4,10 @@ import java.util.List;
 import mx.ipn.upiicsa.udi.scasa.dao.ICtlgDtllRqscnDao;
 import mx.ipn.upiicsa.udi.scasa.entitys.CtrlDetllRqscn;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class CtlgDtllRqscnImpl implements ICtlgDtllRqscnService{
     
     @Autowired

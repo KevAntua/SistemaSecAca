@@ -7,6 +7,8 @@ public interface ICtlgAreasService {
     
     public List<CatalogoAreas> listarCatalogoAreas();
     
-    public CatalogoAreas areaSeleccionada(CatalogoAreas ctlgAreas);
+    public CatalogoAreas areaSeleccionada(CatalogoAreas catalogoAreas);
+    
+    public CatalogoAreas areaSeleccionada(Integer ctlgAreas);
     
 }

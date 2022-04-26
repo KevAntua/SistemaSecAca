@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -17,22 +18,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class CtlgArtsAlmcnCtrller {
 
     @Autowired
-    private ICtlgArtsAlmcnService ictlgArtsAlmcnService;
+    private ICtlgArtsAlmcnService iCtlgArtsAlmcnService;
     
     @GetMapping("/Articulos")
     public String ctlgArtsAlmacenModel(Model model){
-    
-        var artsAlmacen = ictlgArtsAlmcnService.listarArtsAlmacen();
+        var artsAlmacen = iCtlgArtsAlmcnService.listarArtsAlmacen();
         log.info("Ejecutando controlador para el catalogo de los articulos del almacen");
         model.addAttribute("artsAlmacen", artsAlmacen);
         return "articulos_almacen";
     }
     
     @GetMapping("/Articulos/{ccvartl}")
-    public String artModelSeleccionado(CatalogoArtAlmacen catalogoArtAlmacen, Model model) {
-        catalogoArtAlmacen = ictlgArtsAlmcnService.artAlmcnSeleccionado(catalogoArtAlmacen);
+    public String artModelSeleccionado(@PathVariable("ccvartl") CatalogoArtAlmacen catalogoArtAlmacen, Model model) {
+        catalogoArtAlmacen = iCtlgArtsAlmcnService.artAlmcnSeleccionado(catalogoArtAlmacen);
         log.info("Ejecutando controlador para la prueba de solo la busqueda de un articulo seleccionado");
-        model.addAttribute("artsAlmacen2", catalogoArtAlmacen);
+        model.addAttribute("artsAlmacen", catalogoArtAlmacen);
         return "articulos_almacen";
     }
     
@@ -42,27 +42,27 @@ public class CtlgArtsAlmcnCtrller {
         return "alta_articulo";
     }
     
-    @PostMapping("/guardar")
+    @PostMapping("/GuardarArticulo")
     public String guardarArtAlmacen(@Valid CatalogoArtAlmacen catalogoArtAlmacen, Errors errores){
         if(errores.hasErrors())
         {
         return "articulos_almacen";
         }
-        ictlgArtsAlmcnService.guardarArtAlmacen(catalogoArtAlmacen);
+        iCtlgArtsAlmcnService.guardarArtAlmacen(catalogoArtAlmacen);
         return "redirect:/Articulos";
     }
     
     @GetMapping("/AgregarArticulo/{ccvartl}")
     public String actualizarArtAlmacen(CatalogoArtAlmacen catalogoArtAlmacen, Model model){
-        catalogoArtAlmacen = ictlgArtsAlmcnService.artAlmcnSeleccionado(catalogoArtAlmacen);
+        catalogoArtAlmacen = iCtlgArtsAlmcnService.artAlmcnSeleccionado(catalogoArtAlmacen);
         model.addAttribute("catalogoArtAlmacen",catalogoArtAlmacen);
         log.info("Ejecutando controlador para la busqueda de un articulo seleccionado");
         return "alta_articulo";
     }
     
-    @GetMapping("/Eliminar")
+    @GetMapping("/EliminarArticulo")
     public String eliminarrArtAlmacen(CatalogoArtAlmacen catalogoArtAlmacen, Model model){
-        ictlgArtsAlmcnService.eliminarArtAlmacen(catalogoArtAlmacen);
+        iCtlgArtsAlmcnService.eliminarArtAlmacen(catalogoArtAlmacen);
         return "redirect:/Articulos";
     }
 }

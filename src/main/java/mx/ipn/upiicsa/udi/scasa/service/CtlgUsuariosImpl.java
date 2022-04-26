@@ -1,14 +1,16 @@
 package mx.ipn.upiicsa.udi.scasa.service;
 
-import java.util.List;
+/*import java.util.List;
 import mx.ipn.upiicsa.udi.scasa.dao.ICtlgUsuariosDao;
 import mx.ipn.upiicsa.udi.scasa.entitys.CtrlUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;*/
 
-public class CtlgUsuariosImpl implements ICtlgUsuariosService{
+//@Service
+public class CtlgUsuariosImpl /*implements ICtlgUsuariosService*/{
 
-    @Autowired
+    /*@Autowired
     private ICtlgUsuariosDao iCtlgUsuariosDao; 
     
     @Override
@@ -33,6 +35,6 @@ public class CtlgUsuariosImpl implements ICtlgUsuariosService{
     @Transactional(readOnly = true)
     public CtrlUsuarios usuarioSeleccionado(CtrlUsuarios usuario) {
         return iCtlgUsuariosDao.findById(usuario.getCcveusu()).orElse(null);
-    }
+    }*/
     
 }

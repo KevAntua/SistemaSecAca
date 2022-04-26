@@ -11,7 +11,7 @@
         <h1>Alta de Articulos</h1>
         <a th:href="@{/Articulos}">Regresar</a>
         <br/>
-        <form th:action="@{/guardar}" method="post" th:object="${catalogoArtAlmacen}">
+        <form th:action="@{/GuardarArticulo}" method="post" th:object="${catalogoArtAlmacen}">
             <br/>
             <label for="tipo">Tipo de art&iacute;culo</label>
             <input type="text" name="tipo" th:field="*{ctipart}"/>   

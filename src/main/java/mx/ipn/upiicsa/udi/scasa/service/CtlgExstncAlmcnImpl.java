@@ -4,8 +4,10 @@ import java.util.List;
 import mx.ipn.upiicsa.udi.scasa.dao.ICtlgExstncAlmcnDao;
 import mx.ipn.upiicsa.udi.scasa.entitys.CtrlExisAlmacen;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class CtlgExstncAlmcnImpl implements ICtlgExstncAlmcnService{
     
     @Autowired
