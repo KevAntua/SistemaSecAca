@@ -46,7 +46,7 @@ public class CtlgArtsAlmcnCtrller {
     public String guardarArtAlmacen(@Valid CatalogoArtAlmacen catalogoArtAlmacen, Errors errores){
         if(errores.hasErrors())
         {
-        return "articulos_almacen";
+        return "alta_articulo";
         }
         iCtlgArtsAlmcnService.guardarArtAlmacen(catalogoArtAlmacen);
         return "redirect:/Articulos";

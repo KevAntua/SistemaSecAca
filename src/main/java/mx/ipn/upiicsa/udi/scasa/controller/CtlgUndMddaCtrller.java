@@ -27,25 +27,25 @@ public class CtlgUndMddaCtrller {
     }
     
     @GetMapping("/AgregarMedida")
-    public String agregarUniMedida(CatalogoUniMedida unimedida){
+    public String agregarUniMedida(CatalogoUniMedida catalogoUniMedida){
         log.info("Ejecutando controlador para comenzar a agregar una nueva unidad de medida");
         return "alta_medida";
     }
     
-    @PostMapping("/guardarMedida")
-    public String guardarUniMedida(@Valid CatalogoUniMedida unimedida, Errors errores){
+    @PostMapping("/GuardarMedida")
+    public String guardarUniMedida(@Valid CatalogoUniMedida catalogoUniMedida, Errors errores){
         if(errores.hasErrors())
         {
         return "unidades_medida";
         }
-        ctlgUndMedService.guardarUniMedida(unimedida);
+        ctlgUndMedService.guardarUniMedida(catalogoUniMedida);
         return "redirect:/Medidas";
     }
     
     @GetMapping("/AgregarMedida/{ncvunmd}")
-    public String actualizarArtAlmacen(CatalogoUniMedida unimedida, Model model){
-        unimedida = ctlgUndMedService.uniMedidaSeleccionado(unimedida);
-        model.addAttribute("unimedida",unimedida);
+    public String actualizarArtAlmacen(CatalogoUniMedida catalogoUniMedida, Model model){
+        catalogoUniMedida = ctlgUndMedService.uniMedidaSeleccionado(catalogoUniMedida);
+        model.addAttribute("unimedida",catalogoUniMedida);
         log.info("Ejecutando controlador para la busqueda de una unidad de medida seleccionada");
         return "alta_medida";
     }

@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
+        <title>Alta de unidades de medida</title>
+        <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>Alta de Unidades de Medida</h1>
+        <a th:href="@{/Medidas}">Regresar</a>
+        <br/>
+        <form th:action="@{/GuardarMedida}" method="post" th:object="${catalogoUniMedida}">
+            <br/>
+            <label for="ncvunmd">Clave de la unidad de medida</label>
+            <input type="text" name="ncvunmd" th:field="*{ccvartl}"/>
+            <span th:if="${#fields.hasErrors('ncvunmd')}" th:errors="*{ncvunmd}">Error en clave de la medida</span>
+            <br/>
+            <label for="cdescrip">Descripci&oacute;n de la medida</label>
+            <input type="text" name="cdescrip" th:field="*{cdescrip}"/>
+            <span th:if="${#fields.hasErrors('cdescrip')}" th:errors="*{cdescrip}">Error en descripcion de la medida</span>
+            <br/>
+            <label for="cvigent">Estatus de vigencia</label>
+            <input type="text" name="cvigent" th:field="*{cvigent}"/>
+            <span th:if="${#fields.hasErrors('cvigent')}" th:errors="*{cvigent}">Error estatus de la medida</span>
+            <br/>
+            <input type="submit" name="guardarMedida" value="GuardarMedida"/>
+        </form>
     </body>
 </html>

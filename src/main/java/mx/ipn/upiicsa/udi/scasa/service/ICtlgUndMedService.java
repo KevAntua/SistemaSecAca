@@ -7,9 +7,9 @@ public interface ICtlgUndMedService {
 
     public List <CatalogoUniMedida> listarUndMedida();
     
-    public void guardarUniMedida(CatalogoUniMedida uniMedida);
+    public void guardarUniMedida(CatalogoUniMedida catalogoUniMedida);
     
-    public void eliminarUniMedida(CatalogoUniMedida uniMedida);
+    public void eliminarUniMedida(CatalogoUniMedida catalogoUniMedida);
     
-    public CatalogoUniMedida uniMedidaSeleccionado (CatalogoUniMedida uniMedida);
+    public CatalogoUniMedida uniMedidaSeleccionado (CatalogoUniMedida catalogoUniMedida);
 }

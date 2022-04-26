@@ -3,6 +3,7 @@ package mx.ipn.upiicsa.udi.scasa.entitys;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -16,6 +17,6 @@ public class CatalogoUniMedida implements Serializable {
     private int ncvunmd;      // Clave unidad de medida
     @NotEmpty 
     private String cdescrip;  // Descripción
-    @NotEmpty 
+    @NotNull
     private char cvigent;   // Indica si se encuentra o no vigente (S=Vigente; N=No vigente)
 }

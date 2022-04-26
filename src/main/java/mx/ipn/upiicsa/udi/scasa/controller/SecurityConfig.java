@@ -47,9 +47,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {  //Concepto de autorizacion
         http.authorizeRequests()
-                .antMatchers("/","/Areas/**","/AgregarArticulo","/GuardarArticulo","/EliminarArticulo")
+                .antMatchers("/","/Areas/**","/AgregarArticulo","/GuardarArticulo","/EliminarArticulo","/AgregarMedida","/GuardarMedida","/EliminarMedida")
                 .hasAnyRole("Master", "APrincipal", "ASecundario") //Javier Edgrdo , SA49MVJ2021
-                .antMatchers("/", "/Articulos")
+                .antMatchers("/", "/Articulos", "/Medidas")
                 .hasAnyRole("Usuario", "Pendiente")
                 .and()
                 .formLogin()

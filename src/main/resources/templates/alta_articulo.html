@@ -27,17 +27,17 @@
             <br/>
             <label for="nmaximo">Cantidad m&aacute;xima del art&iacute;culo</label>
             <input type="text" name="nmaximo" th:field="*{nmaximo}"/>
-            <!--<span th:if="${#fields.hasErrors('nmaximo')}" th:errors="*{nmaximo}">Error maximo de articulo</span>-->
+            <span th:if="${#fields.hasErrors('nmaximo')}" th:errors="*{nmaximo}">Error maximo de articulo</span>
             <br/>
             <label for="nminimo">Cantidad m&iacute;nima del art&iacute;culo</label>
             <input type="text" name="nminimo" th:field="*{nminimo}"/>
-            <!--<span th:if="${#fields.hasErrors('nminimo')}" th:errors="*{nminimo}">Error minimo de articulo</span>-->
+            <span th:if="${#fields.hasErrors('nminimo')}" th:errors="*{nminimo}">Error minimo de articulo</span>
             <br/>
             <label for="cvigent">Estatus de vigencia</label>
             <input type="text" name="cvigent" th:field="*{cvigent}"/>
             <span th:if="${#fields.hasErrors('cvigent')}" th:errors="*{cvigent}">Error estatus de articulo</span>
             <br/>
-            <input type="submit" name="guardar" value="Guardar"/>
+            <input type="submit" name="guardarArticulo" value="GuardarArticulo"/>
         </form>
     </body>
 </html>
