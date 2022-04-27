@@ -31,7 +31,7 @@ public class CtlgArtsAlmcnCtrller {
     @GetMapping("/Articulos/{ccvartl}")
     public String artModelSeleccionado(@PathVariable("ccvartl") CatalogoArtAlmacen catalogoArtAlmacen, Model model) {
         catalogoArtAlmacen = iCtlgArtsAlmcnService.artAlmcnSeleccionado(catalogoArtAlmacen);
-        log.info("Ejecutando controlador para la prueba de solo la busqueda de un articulo seleccionado");
+        log.info("Ejecutando controlador para  la busqueda de un articulo seleccionado");
         model.addAttribute("artsAlmacen", catalogoArtAlmacen);
         return "articulos_almacen";
     }

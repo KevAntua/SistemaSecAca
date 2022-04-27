@@ -37,7 +37,7 @@ public class CtrlEntrdAlmcnCtrller {
 
     @GetMapping("/AgregarEntradaAlmacen")
     public String agregarEntrada(CtrlEntrAlmacen ctrlEntrAlmacen) {
-        log.info("Ejecutando controlador para comenzar a agregar un nuevo articulo al almacen");
+        log.info("Ejecutando controlador para comenzar a agregar una entrada al almacen");
         return "alta_entradaAlmacen";
     }
     

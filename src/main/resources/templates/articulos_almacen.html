@@ -28,7 +28,7 @@
                     <td th:text="${vtctlgartsAlmacen.nminimo}">Muestra la Cantidad m&iacute;nima del art&iacute;culo</td>
                     <td th:text="${vtctlgartsAlmacen.cvigent}">Muestra el estatus del art&iacute;culo</td>
                     <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/AgregarArticulo/} + ${vtctlgartsAlmacen.ccvartl}" th:text="Editar"/></td>
-                    <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{//EliminarArticulo(ccvartl=${vtctlgartsAlmacen.ccvartl})}" th:text="Eliminar"/></td>
+                    <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/EliminarArticulo(ccvartl=${vtctlgartsAlmacen.ccvartl})}" th:text="Eliminar"/></td>
                 </tr>
             </table>
         </div>

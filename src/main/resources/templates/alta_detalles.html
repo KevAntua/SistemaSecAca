@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Alta del detalle de la entrada de un art&iacute;culo</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h1>Alta de detalle de la entrada del art&iacute;culo</h1>
+        <a th:href="@{/DetallesEntradas}">Regresar</a>
+        <br/>
+        <form th:action="@{/GuardarDtllsEntrd}" method="post" th:object="${ctrlDetalEntrAlmacen}">
+            <br/>
+            <label for="nidenta">Id del registro de la entrada</label>
+            <input type="text" name="nidenta" th:field="*{nidenta}"/>
+            <span th:if="${#fields.hasErrors('nidenta')}" th:errors="*{nidenta}">Error en el id del registro de la entrada</span>
+            <br/>
+            <label for="nanioea">Año del registro de la entrada</label>
+            <input type=number name="nanioea" th:field="*{nanioea}"/>
+            <span th:if="${#fields.hasErrors('nanioea')}" th:errors="*{nanioea}">Error en el año del registro de la entrada</span>
+            <br/>
+            <label for="niddent">Id del detalle de la entrada</label>
+            <input type="text" name="niddent" th:field="*{niddent}"/>
+            <span th:if="${#fields.hasErrors('niddent')}" th:errors="*{niddent}">Error en el id del detalle de la entrada</span>
+            <br/>
+            <label for="tipo">Tipo de art&iacute;culo</label>
+            <input type="text" name="tipo" th:field="*{ctipart}"/>   
+            <span th:if="${#fields.hasErrors('ctipart')}" th:errors="*{ctipart}">Error tipo de articulo</span>
+            <br/>
+            <label for="ccvartl">Clave del art&iacute;culo</label>
+            <input type="text" name="ccvartl" th:field="*{ccvartl}"/>
+            <span th:if="${#fields.hasErrors('ccvartl')}" th:errors="*{ccvartl}">Error clave de articulo</span>
+            <br/>
+            <label for="ncvunmd">Clave de la unidad de medida del art&iacute;culo</label>
+            <input type="text" name="ncvunmd" th:field="*{ncvunmd}"/>
+            <span th:if="${#fields.hasErrors('ncvunmd')}" th:errors="*{ncvunmd}">Error de la clave de unidad de medida</span>
+            <br/>
+            <label for="ncantid">Cantidad en existencia del art&iacute;culo</label>
+            <input type="text" name="ncantid" th:field="*{ncantid}"/>
+            <span th:if="${#fields.hasErrors('ncantid')}" th:errors="*{ncantid}">Error en la cantidad en existencia del art&iacute;culo</span>
+            <br/>
+            <label for="ncostou">Costo unitario del art&iacute;culo</label>
+            <input type="text" name="ncostou" th:field="*{ncostou}"/>
+            <span th:if="${#fields.hasErrors('ncostou')}" th:errors="*{ncostou}">Error en el costo unitario del art&iacute;culo</span>
+            <br/>
+            <label for="cstatus">Estatus de vigencia</label>
+            <input type="text" name="cstatus" th:field="*{cstatus}"/>
+            <span th:if="${#fields.hasErrors('cstatus')}" th:errors="*{cstatus}">Error en estatus del registro de la entrada</span>
+            <br/>
+            <input type="submit" name="guardarDtllsEntrd" value="GuardarDtllsEntrd"/>
+        </form>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
