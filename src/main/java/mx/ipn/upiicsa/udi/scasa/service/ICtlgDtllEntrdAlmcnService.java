@@ -7,10 +7,10 @@ public interface ICtlgDtllEntrdAlmcnService {
     
     public List<CtrlDetalEntrAlmacen> listarDtlLEntrdAlmcn(); 
     
-    public void guardarDtlLEntrdAlmcn (CtrlDetalEntrAlmacen dtlLEntrdAlmcn);
+    public void guardarDtlLEntrdAlmcn (CtrlDetalEntrAlmacen ctrlDetalEntrAlmacen);
 
-    public void eliminarDtlLEntrdAlmcn (CtrlDetalEntrAlmacen dtlLEntrdAlmcn);
+    public void eliminarDtlLEntrdAlmcn (CtrlDetalEntrAlmacen ctrlDetalEntrAlmacen);
 
-    public CtrlDetalEntrAlmacen dtlLEntrdAlmcnSeleccionado (CtrlDetalEntrAlmacen dtlLEntrdAlmcn);
+    public CtrlDetalEntrAlmacen dtlLEntrdAlmcnSeleccionado (CtrlDetalEntrAlmacen ctrlDetalEntrAlmacen);
     
 }

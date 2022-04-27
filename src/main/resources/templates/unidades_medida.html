@@ -22,7 +22,7 @@
                     <td th:text="${vunidadesMedida.cdescrip}">Muestra la descripci&oacute;n de la medida</td>
                     <td th:text="${vunidadesMedida.cvigent}">Muestra el estatus de la medida</td>
                     <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/AgregarMedida/} + ${vunidadesMedida.ncvunmd}" th:text="Editar"/></td>
-                    <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/Eliminar(ncvunmd=${vunidadesMedida.ncvunmd})}" th:text="Eliminar"/></td>
+                    <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/EliminarMedida(ncvunmd=${vunidadesMedida.ncvunmd})}" th:text="Eliminar"/></td>
                 </tr>
             </table>
         </div>

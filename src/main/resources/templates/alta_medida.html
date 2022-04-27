@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" 
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>Alta de unidades de medida</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,5 +27,6 @@
             <br/>
             <input type="submit" name="guardarMedida" value="GuardarMedida"/>
         </form>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

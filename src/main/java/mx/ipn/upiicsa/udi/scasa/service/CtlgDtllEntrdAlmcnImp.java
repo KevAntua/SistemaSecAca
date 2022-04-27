@@ -21,20 +21,20 @@ public class CtlgDtllEntrdAlmcnImp implements ICtlgDtllEntrdAlmcnService{
 
     @Override
     @Transactional
-    public void guardarDtlLEntrdAlmcn(CtrlDetalEntrAlmacen dtlLEntrdAlmcn) {
-        iCtlgDtllEntrdAlmcnDao.save(dtlLEntrdAlmcn);
+    public void guardarDtlLEntrdAlmcn(CtrlDetalEntrAlmacen ctrlDetalEntrAlmacen) {
+        iCtlgDtllEntrdAlmcnDao.save(ctrlDetalEntrAlmacen);
     }
 
     @Override
     @Transactional
-    public void eliminarDtlLEntrdAlmcn(CtrlDetalEntrAlmacen dtlLEntrdAlmcn) {
-        iCtlgDtllEntrdAlmcnDao.delete(dtlLEntrdAlmcn);
+    public void eliminarDtlLEntrdAlmcn(CtrlDetalEntrAlmacen ctrlDetalEntrAlmacen) {
+        iCtlgDtllEntrdAlmcnDao.delete(ctrlDetalEntrAlmacen);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public CtrlDetalEntrAlmacen dtlLEntrdAlmcnSeleccionado(CtrlDetalEntrAlmacen dtlLEntrdAlmcn) {
-        return iCtlgDtllEntrdAlmcnDao.findById(dtlLEntrdAlmcn.getNiddent()).orElse(null);
+    public CtrlDetalEntrAlmacen dtlLEntrdAlmcnSeleccionado(CtrlDetalEntrAlmacen ctrlDetalEntrAlmacen) {
+        return iCtlgDtllEntrdAlmcnDao.findById(ctrlDetalEntrAlmacen.getNiddent()).orElse(null);
     }
     
 }

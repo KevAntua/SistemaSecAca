@@ -3,15 +3,15 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:replace="layout/plantilla :: head">
-        <title>Alta de Articulos</title>
+        <title>Alta de Existencia de Articulo</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <h1>Alta de Articulos</h1>
-        <a th:href="@{/Articulos}">Regresar</a>
+        <h1>Alta de Existencia de Articulo</h1>
+        <a th:href="@{/ExistenciasAlmacen}">Regresar</a>
         <br/>
-        <form th:action="@{/GuardarArticulo}" method="post" th:object="${catalogoArtAlmacen}">
+        <form th:action="@{/GuardarExistencia}" method="post" th:object="${ctrlExisAlmacen}">
             <br/>
             <label for="tipo">Tipo de art&iacute;culo</label>
             <input type="text" name="tipo" th:field="*{ctipart}"/>   
@@ -21,24 +21,20 @@
             <input type="text" name="ccvartl" th:field="*{ccvartl}"/>
             <span th:if="${#fields.hasErrors('ccvartl')}" th:errors="*{ccvartl}">Error clave de articulo</span>
             <br/>
-            <label for="cdescrip">Descripci&oacute;n del art&iacute;culo</label>
-            <input type="text" name="cdescrip" th:field="*{cdescrip}"/>
-            <span th:if="${#fields.hasErrors('cdescrip')}" th:errors="*{cdescrip}">Error descripcion de articulo</span>
+            <label for="ncantid">Cantidad en existencia del art&iacute;culo</label>
+            <input type="text" name="ncantid" th:field="*{ncantid}"/>
+            <span th:if="${#fields.hasErrors('ncantid')}" th:errors="*{ncantid}">Error en la cantidad en existencia del articulo</span>
             <br/>
-            <label for="nmaximo">Cantidad m&aacute;xima del art&iacute;culo</label>
-            <input type="text" name="nmaximo" th:field="*{nmaximo}"/>
-            <span th:if="${#fields.hasErrors('nmaximo')}" th:errors="*{nmaximo}">Error maximo de articulo</span>
-            <br/>
-            <label for="nminimo">Cantidad m&iacute;nima del art&iacute;culo</label>
-            <input type="text" name="nminimo" th:field="*{nminimo}"/>
-            <span th:if="${#fields.hasErrors('nminimo')}" th:errors="*{nminimo}">Error minimo de articulo</span>
+            <label for="ncvunmd">Clave de la unidad de medida del art&iacute;culo</label>
+            <input type="text" name="ncvunmd" th:field="*{ncvunmd}"/>
+            <span th:if="${#fields.hasErrors('ncvunmd')}" th:errors="*{ncvunmd}">Error de la clave de unidad de medida</span>
             <br/>
             <label for="cvigent">Estatus de vigencia</label>
             <input type="text" name="cvigent" th:field="*{cvigent}"/>
             <span th:if="${#fields.hasErrors('cvigent')}" th:errors="*{cvigent}">Error estatus de articulo</span>
             <br/>
-            <input type="submit" name="guardarArticulo" value="GuardarArticulo"/>
+            <input type="submit" name="guardarExistencia" value="GuardarExistencia"/>
         </form>
-        <footer th:replace="layout/plantilla :: footer"/>
+    <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

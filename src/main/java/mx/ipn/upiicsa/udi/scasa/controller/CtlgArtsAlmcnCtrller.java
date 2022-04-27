@@ -61,7 +61,7 @@ public class CtlgArtsAlmcnCtrller {
     }
     
     @GetMapping("/EliminarArticulo")
-    public String eliminarrArtAlmacen(CatalogoArtAlmacen catalogoArtAlmacen, Model model){
+    public String eliminarArtAlmacen(CatalogoArtAlmacen catalogoArtAlmacen, Model model){
         iCtlgArtsAlmcnService.eliminarArtAlmacen(catalogoArtAlmacen);
         return "redirect:/Articulos";
     }

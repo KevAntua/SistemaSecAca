@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -14,12 +14,14 @@ public class CtrlEntrAlmacen implements Serializable {
 private static final long serialVersionUID = 1L;
 
 @Id
+@NotNull
 private int nidenta;          // ID de entrada
-//@Id
+@NotNull
 private int nanioea;          // Año de la entrada
+@NotNull
 private LocalDate dfecent;    // Fecha de la entrada 
 // https://www.campusmvp.es/recursos/post/como-manejar-correctamente-fechas-en-java-el-paquete-java-time.aspx
-@NotEmpty 
+@NotNull
 private char cstatus;         // Indica si la entrada se encuentra (A=Activa, P=Procesada o C=Cancelada)
   
 //ALTER TABLE PENTALM ADD   CONSTRAINT PK_PENTALM

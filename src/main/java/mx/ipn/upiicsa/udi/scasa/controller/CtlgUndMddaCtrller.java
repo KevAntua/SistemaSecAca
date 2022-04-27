@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -16,14 +17,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class CtlgUndMddaCtrller {
     
     @Autowired
-    private ICtlgUndMedService ctlgUndMedService;
+    private ICtlgUndMedService iCtlgUndMedService;
     
     @GetMapping("/Medidas")
     public String ctlgUndMedidaModel(Model model){
-        var unidadesMedida = ctlgUndMedService.listarUndMedida();
+        var unidadesMedida = iCtlgUndMedService.listarUndMedida();
         log.info("Ejecutando controlador para el catalogo de las unidades de medida");
         model.addAttribute("unidadesMedida", unidadesMedida);
         return "unidades_medida";
+    }
+    
+    @GetMapping("/Medidas/{ncvunmd}")
+    public String medidaSeleccionada(@PathVariable("ncvunmd") CatalogoUniMedida catalogoUniMedida, Model model) {
+        catalogoUniMedida = iCtlgUndMedService.uniMedidaSeleccionado(catalogoUniMedida);
+        log.info("Ejecutando controlador para la busqueda de una medida seleccionada");
+        model.addAttribute("unidadesMedida", catalogoUniMedida);
+        return "entradas_almacen";
     }
     
     @GetMapping("/AgregarMedida")
@@ -36,23 +45,23 @@ public class CtlgUndMddaCtrller {
     public String guardarUniMedida(@Valid CatalogoUniMedida catalogoUniMedida, Errors errores){
         if(errores.hasErrors())
         {
-        return "unidades_medida";
+        return "alta_medida";
         }
-        ctlgUndMedService.guardarUniMedida(catalogoUniMedida);
+        iCtlgUndMedService.guardarUniMedida(catalogoUniMedida);
         return "redirect:/Medidas";
     }
     
     @GetMapping("/AgregarMedida/{ncvunmd}")
-    public String actualizarArtAlmacen(CatalogoUniMedida catalogoUniMedida, Model model){
-        catalogoUniMedida = ctlgUndMedService.uniMedidaSeleccionado(catalogoUniMedida);
+    public String actualizarUniMedida(CatalogoUniMedida catalogoUniMedida, Model model){
+        catalogoUniMedida = iCtlgUndMedService.uniMedidaSeleccionado(catalogoUniMedida);
         model.addAttribute("unimedida",catalogoUniMedida);
-        log.info("Ejecutando controlador para la busqueda de una unidad de medida seleccionada");
+        log.info("Ejecutando controlador para la busqueda de una unidad de medida seleccionada para actualizar");
         return "alta_medida";
     }
     
     @GetMapping("/EliminarMedida")
-    public String eliminarrArtAlmacen(CatalogoUniMedida unimedida, Model model){
-        ctlgUndMedService.eliminarUniMedida(unimedida);
+    public String eliminarUniMedida(CatalogoUniMedida catalogoUniMedida, Model model){
+        iCtlgUndMedService.eliminarUniMedida(catalogoUniMedida);
         return "redirect:/Medidas";
     }
     

@@ -11,30 +11,30 @@ import org.springframework.transaction.annotation.Transactional;
 public class CtlgEntrdAlmcnImpl implements ICtlgEntrdAlmcnService{
     
     @Autowired
-    private ICtlgEntrdAlmcnDao ctlgEntrdAlmcnDao;
+    private ICtlgEntrdAlmcnDao iCtlgEntrdAlmcnDao;
 
     @Override
     @Transactional(readOnly = true)
     public List<CtrlEntrAlmacen> listarEntrdAlmcn() {
-        return (List<CtrlEntrAlmacen>) ctlgEntrdAlmcnDao.findAll();
+        return (List<CtrlEntrAlmacen>) iCtlgEntrdAlmcnDao.findAll();
     }
 
     @Override
     @Transactional
-    public void guardarEntrdAlmcn(CtrlEntrAlmacen entrAlmacen) {
-        ctlgEntrdAlmcnDao.save(entrAlmacen);
+    public void guardarEntrdAlmcn(CtrlEntrAlmacen ctrlEntrAlmacen) {
+        iCtlgEntrdAlmcnDao.save(ctrlEntrAlmacen);
     }
 
     @Override
     @Transactional
-    public void eliminarEntrdAlmcn(CtrlEntrAlmacen entrAlmacen) {
-        ctlgEntrdAlmcnDao.delete(entrAlmacen);
+    public void eliminarEntrdAlmcn(CtrlEntrAlmacen ctrlEntrAlmacen) {
+        iCtlgEntrdAlmcnDao.delete(ctrlEntrAlmacen);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public CtrlEntrAlmacen entrdAlmcnSeleccionado(CtrlEntrAlmacen entrAlmacen) {
-        return ctlgEntrdAlmcnDao.findById(entrAlmacen.getNidenta()).orElse(null);
+    public CtrlEntrAlmacen entrdAlmcnSeleccionado(CtrlEntrAlmacen ctrlEntrAlmacen) {
+        return iCtlgEntrdAlmcnDao.findById(ctrlEntrAlmacen.getNidenta()).orElse(null);
     }
     
 }

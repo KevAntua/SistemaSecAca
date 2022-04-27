@@ -7,9 +7,9 @@ public interface ICtlgExstncAlmcnService {
 
     public List<CtrlExisAlmacen> listarExstncAlmcn();
     
-    public void guardarExstncAlmcn (CtrlExisAlmacen exisAlmacen);
+    public void guardarExstncAlmcn (CtrlExisAlmacen ctrlExisAlmacen);
     
-    public void eliminarExstncAlmcn (CtrlExisAlmacen exisAlmacen);
+    public void eliminarExstncAlmcn (CtrlExisAlmacen ctrlExisAlmacen);
     
-    public CtrlExisAlmacen exstncAlmcnSeleccionado (CtrlExisAlmacen exisAlmacen);
+    public CtrlExisAlmacen exstncAlmcnSeleccionado (CtrlExisAlmacen ctrlExisAlmacen);
 }
