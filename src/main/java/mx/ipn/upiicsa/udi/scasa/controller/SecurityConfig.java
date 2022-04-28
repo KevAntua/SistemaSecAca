@@ -50,9 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/","/Areas/**",
                         "/AgregarArticulo","/GuardarArticulo","/EliminarArticulo",
                         "/AgregarMedida","/GuardarMedida","/EliminarMedida",
-                        "/AgregarEntradaAlmacen","/GuardarEntrada","/EliminarEntrada")
+                        "/AgregarEntradaAlmacen","/GuardarEntrada","/EliminarEntrada",
+                        "/AgregarDtllsEntrd","/GuardarDtllsEntrd","/EliminarDtllsEntrd")
                 .hasAnyRole("Master", "APrincipal", "ASecundario") //Javier Edgrdo , SA49MVJ2021
-                .antMatchers("/", "/Articulos", "/Medidas","/Entradas")
+                .antMatchers("/", "/Articulos", "/Medidas","/Entradas","/DetallesEntradas")
                 .hasAnyRole("Usuario", "Pendiente")
                 .and()
                 .formLogin()

@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Detalles de las entradas al Almacen</h1>
-        <a sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')" th:href="@{/AgregarDtllsEntrd}">Dar de alta dettales de entrada</a>
+        <a sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')" th:href="@{/AgregarDtllsEntrd}">Dar de alta detalles de entrada</a>
         <div th:if="${dtllEntrAlmcn != null}"> <!-- and !artsAlmacen.empty}" -->
             <table border="1">
                 <tr>
