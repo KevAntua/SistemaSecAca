@@ -25,15 +25,15 @@ public class CtlgAreasCtrller {
         return "areas";
     }
 
-    /*@GetMapping(value = "/Areas/{nidarea}")//@DeleteMapping(value="{codigoRegistro}"), @PathVariable("codigoRegistro")
+    @GetMapping(value = "/Areas/{nidarea}")//@DeleteMapping(value="{codigoRegistro}"), @PathVariable("codigoRegistro")
     public String areaModelSeleccionado(@PathVariable("nidarea") CatalogoAreas catalogoAreas, Model model) {
         catalogoAreas = ictlgAreasService.areaSeleccionada(catalogoAreas);
         model.addAttribute("catalogoAreas", catalogoAreas);
         log.info("Ejecutando controlador para la busqueda de una area seleccionada");
         return "areas";
-    }*/
+    }
 
-    @GetMapping(value = "/Areas/{nidarea}")//@DeleteMapping(value="{codigoRegistro}"), @PathVariable("codigoRegistro")
+    /*@GetMapping(value = "/Areas/{nidarea}")//@DeleteMapping(value="{codigoRegistro}"), @PathVariable("codigoRegistro")
     public String areaSeleccionadaM2(@PathVariable("nidarea") Integer niderea, Model model) {
         List<CatalogoAreas> AreasSeleccionada = ictlgAreasService.listarCatalogoAreas();
 
@@ -46,7 +46,7 @@ public class CtlgAreasCtrller {
             }
         }
         return "areas";
-    }
+    }*/
 
     /*@GetMapping(value="/Areas/{nidarea}")//@DeleteMapping(value="{codigoRegistro}"), @PathVariable("codigoRegistro")
     public String areaModelSeleccionado(@PathVariable("nidarea") Integer ctlgAreas, Model model) {
