@@ -22,6 +22,7 @@ public class CtlgEntrdAlmcnImpl implements ICtlgEntrdAlmcnService{
     @Override
     @Transactional
     public void guardarEntrdAlmcn(CtrlEntrAlmacen ctrlEntrAlmacen) {
+        
         iCtlgEntrdAlmcnDao.save(ctrlEntrAlmacen);
     }
 

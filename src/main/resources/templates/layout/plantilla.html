@@ -10,20 +10,23 @@
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <link rel="stylesheet" type="text/css" href="css/Style.css"/>    
+        <link rel="preload" href="css/normalize.css">
+        <link rel="stylesheet" href="css/normalize.css"> 
     </head>
-    <body>
-        <header th:fragment="header">
-            <h1> &Aacute;reas y Responsables prueba de GIT</h1>
-        </header>
-        
-        <footer th:fragment="footer">
-            <p>Derechos Reservados <a href="https://www.ipn.mx/" target="_blank">IPN.mx</a></p>
-            <form method="POST" th:action="@{/logout}">
-                <b>User: </b> <span sec:authentication="name">Usuario que hizo login</span>
-                <b>Roles: </b> <span sec:authentication="principal.authorities">Roles</span>
-                <a href="#" onclick="this.parentNode.submit();">Logout</a>
-            </form>
-        </footer>
+                <body>
+                    <header th:fragment="header">
+                        <h1> &Aacute;reas y Responsables prueba de GIT</h1>
+                    </header>
 
-    </body>
-</html>
+                    <footer th:fragment="footer">
+                        <p>Derechos Reservados <a href="https://www.ipn.mx/" target="_blank">IPN.mx</a></p>
+                        <form method="POST" th:action="@{/logout}">
+                            <b>User: </b> <span sec:authentication="name">Usuario que hizo login</span>
+                            <b>Roles: </b> <span sec:authentication="principal.authorities">Roles</span>
+                            <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                        </form>
+                    </footer>
+
+                </body>
+                </html>
