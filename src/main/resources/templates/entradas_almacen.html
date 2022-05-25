@@ -16,6 +16,8 @@
                     <th>Id del registro de la entrada</th>
                     <th>Año de la entrada</th>
                     <th>Fecha de la entrada</th>
+                    <th>Descripci&oacute;n del art&iacute;culo</th>
+                    <th>Cantidad</th>
                     <th>Estatus de vigencia</th>
                     <th sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Modificar datos</th>
                     <th sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Eliminar definitivamente</th>
@@ -23,7 +25,9 @@
                 <tr th:each="ventradasAlmacen : ${entradasAlmacen}"><!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
                     <td th:text="${ventradasAlmacen.nidenta}">Muestra el id del registro de la entrada</td>
                     <td th:text="${ventradasAlmacen.nanioea}">Muestra el año de la entrada</td>
-                    <td th:text="${ventradasAlmacen.dfecent}">Muestra la fecha de la entrada</td>
+                    <td th:text="${#dates.format(ventradasAlmacen.dfecent,'dd-MMM-yyyy')}">Muestra la fecha de la entrada</td>
+                    <td th:text="${ventradasAlmacen.detentrada.ccvartl}">Muestra la descripci&oacute;n del art&iacute;culo</td>
+                    <td th:text="${ventradasAlmacen.detentrada.ncantid}">Muestra la cantidad</td>
                     <td th:text="${ventradasAlmacen.cstatus}">Muestra el estatus de vigencia</td>
                     <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/AgregarEntradaAlmacen/} + ${ventradasAlmacen.nidenta}" th:text="Editar"/></td>
                     <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/EliminarEntrada(nidenta=${ventradasAlmacen.nidenta})}" th:text="Eliminar"/></td>

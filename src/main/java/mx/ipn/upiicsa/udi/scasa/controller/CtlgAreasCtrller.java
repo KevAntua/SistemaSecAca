@@ -1,6 +1,5 @@
 package mx.ipn.upiicsa.udi.scasa.controller;
 
-import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import mx.ipn.upiicsa.udi.scasa.entitys.CatalogoAreas;
 import mx.ipn.upiicsa.udi.scasa.service.ICtlgAreasService;
@@ -15,11 +14,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class CtlgAreasCtrller {
 
     @Autowired
+    //private IBusquedaService iBusquedaS; 
     private ICtlgAreasService ictlgAreasService;
 
     @GetMapping("/Areas")
     public String ctlgAreasModel(Model model) {
         var catalogoAreas = ictlgAreasService.listarCatalogoAreas();
+        
+        /*List<Object> catalogoAreas = Arrays.asList(iBusquedaS.listartodo(),CatalogoAreas[].class);
+        var lista = catalogoAreas.stream().map(p -> new CatalogoAreas(p)).collect(Collectors.toList());*/
+        
         log.info("Ejecutando controlador para catalogo de areas");
         model.addAttribute("catalogoAreas", catalogoAreas);
         return "areas";

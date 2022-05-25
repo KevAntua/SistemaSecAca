@@ -19,7 +19,7 @@ public class CtlgUndMddaCtrller {
     @Autowired
     private ICtlgUndMedService iCtlgUndMedService;
     
-    @GetMapping("/Medidas")
+    @GetMapping("/UnidadesMedida")
     public String ctlgUndMedidaModel(Model model){
         var unidadesMedida = iCtlgUndMedService.listarUndMedida();
         log.info("Ejecutando controlador para el catalogo de las unidades de medida");
@@ -27,12 +27,12 @@ public class CtlgUndMddaCtrller {
         return "unidades_medida";
     }
     
-    @GetMapping("/Medidas/{ncvunmd}")
+    @GetMapping("/UnidadesMedida/{ncvunmd}")
     public String medidaSeleccionada(@PathVariable("ncvunmd") CatalogoUniMedida catalogoUniMedida, Model model) {
         catalogoUniMedida = iCtlgUndMedService.uniMedidaSeleccionado(catalogoUniMedida);
         log.info("Ejecutando controlador para la busqueda de una medida seleccionada");
         model.addAttribute("unidadesMedida", catalogoUniMedida);
-        return "entradas_almacen";
+        return "unidades_medida";
     }
     
     @GetMapping("/AgregarMedida")
@@ -48,13 +48,13 @@ public class CtlgUndMddaCtrller {
         return "alta_medida";
         }
         iCtlgUndMedService.guardarUniMedida(catalogoUniMedida);
-        return "redirect:/Medidas";
+        return "redirect:/UnidadesMedida";
     }
     
     @GetMapping("/AgregarMedida/{ncvunmd}")
     public String actualizarUniMedida(CatalogoUniMedida catalogoUniMedida, Model model){
         catalogoUniMedida = iCtlgUndMedService.uniMedidaSeleccionado(catalogoUniMedida);
-        model.addAttribute("unimedida",catalogoUniMedida);
+        model.addAttribute("catalogoUniMedida",catalogoUniMedida);
         log.info("Ejecutando controlador para la busqueda de una unidad de medida seleccionada para actualizar");
         return "alta_medida";
     }
@@ -62,7 +62,7 @@ public class CtlgUndMddaCtrller {
     @GetMapping("/EliminarMedida")
     public String eliminarUniMedida(CatalogoUniMedida catalogoUniMedida, Model model){
         iCtlgUndMedService.eliminarUniMedida(catalogoUniMedida);
-        return "redirect:/Medidas";
+        return "redirect:/UnidadesMedida";
     }
     
 }

@@ -22,13 +22,53 @@
             <span th:if="${#fields.hasErrors('nanioea')}" th:errors="*{nanioea}">Error en el año del registro de la entrada</span>
             <br/>
             <label for="dfecent">Fecha del registro de la entrada</label>
-            <input type="datetime-local" name="dfecent" th:field="*{dfecent}"/>
+            <input type="date" name="dfecent" th:field="*{dfecent}"/>
             <span th:if="${#fields.hasErrors('dfecent')}" th:errors="*{dfecent}">Error en la fecha del registro de la entrada</span>
             <br/>
             <label for="cstatus">Estatus de vigencia</label>
             <input type="text" name="cstatus" th:field="*{cstatus}"/>
             <span th:if="${#fields.hasErrors('cstatus')}" th:errors="*{cstatus}">Error en estatus del registro de la entrada</span>
             <br/>
+            
+            <br/>
+            <label for="detentrada.nidenta">Id del registro de la entrada</label>
+            <input type="text" name="nidenta" th:field="*{detentrada.nidenta}"/>
+            <span th:if="${#fields.hasErrors('detentrada.nidenta')}" th:errors="*{detentrada.nidenta}">Error en el id del registro de la entrada</span>
+            <br/>
+            <label for="detentrada.nanioea">Año del registro de la entrada</label>
+            <input type=number name="detentrada.nanioea" th:field="*{detentrada.nanioea}"/>
+            <span th:if="${#fields.hasErrors('detentrada.nanioea')}" th:errors="*{detentrada.nanioea}">Error en el año del registro de la entrada</span>
+            <br/>
+            <label for="detentrada.niddent">Id del detalle de la entrada</label>
+            <input type="text" name="detentrada.niddent" th:field="*{detentrada.niddent}"/>
+            <span th:if="${#fields.hasErrors('detentrada.niddent')}" th:errors="*{detentrada.niddent}">Error en el id del detalle de la entrada</span>
+            <br/>
+            <label for="detentrada.tipo">Tipo de art&iacute;culo</label>
+            <input type="text" name="detentrada.tipo" th:field="*{detentrada.ctipart}"/>   
+            <span th:if="${#fields.hasErrors('detentrada.ctipart')}" th:errors="*{detentrada.ctipart}">Error tipo de articulo</span>
+            <br/>
+            <label for="detentrada.ccvartl">Clave del art&iacute;culo</label>
+            <input type="text" name="detentrada.ccvartl" th:field="*{detentrada.ccvartl}"/>
+            <span th:if="${#fields.hasErrors('detentrada.ccvartl')}" th:errors="*{detentrada.ccvartl}">Error clave de articulo</span>
+            <br/>
+            <label for="detentrada.ncvunmd">Clave de la unidad de medida del art&iacute;culo</label>
+            <input type="text" name="detentrada.ncvunmd" th:field="*{detentrada.ncvunmd}"/>
+            <span th:if="${#fields.hasErrors('detentrada.ncvunmd')}" th:errors="*{detentrada.ncvunmd}">Error de la clave de unidad de medida</span>
+            <br/>
+            <label for="detentrada.ncantid">Cantidad en existencia del art&iacute;culo</label>
+            <input type="text" name="detentrada.ncantid" th:field="*{detentrada.ncantid}"/>
+            <span th:if="${#fields.hasErrors('detentrada.ncantid')}" th:errors="*{detentrada.ncantid}">Error en la cantidad en existencia del art&iacute;culo</span>
+            <br/>
+            <label for="detentrada.ncostou">Costo unitario del art&iacute;culo</label>
+            <input type="text" name="detentrada.ncostou" th:field="*{detentrada.ncostou}"/>
+            <span th:if="${#fields.hasErrors('detentrada.ncostou')}" th:errors="*{detentrada.ncostou}">Error en el costo unitario del art&iacute;culo</span>
+            <br/>
+            <label for="detentrada.cstatus">Estatus de vigencia</label>
+            <input type="text" name="detentrada.cstatus" th:field="*{detentrada.cstatus}"/>
+            <span th:if="${#fields.hasErrors('detentrada.cstatus')}" th:errors="*{detentrada.cstatus}">Error en estatus del registro de la entrada</span>
+            <br/>
+            
+            
             <input type="submit" name="guardarEntrada" value="GuardarEntrada"/>
         </form>
         <footer th:replace="layout/plantilla :: footer"/>

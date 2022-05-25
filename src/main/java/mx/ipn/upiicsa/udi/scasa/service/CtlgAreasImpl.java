@@ -12,7 +12,10 @@ public class CtlgAreasImpl implements ICtlgAreasService{
 
     @Autowired
     private ICtlgAreasDao ctlgAreasDao;
-    
+
+    //@Autowired
+    //private CatalogoAreas ctlgAreas;
+
     @Override
     @Transactional(readOnly = true)
     public List<CatalogoAreas> listarCatalogoAreas(){
@@ -23,7 +26,7 @@ public class CtlgAreasImpl implements ICtlgAreasService{
     @Transactional(readOnly = true)
     public CatalogoAreas areaSeleccionada(CatalogoAreas ctlgAreas){
     return ctlgAreasDao.findById(ctlgAreas.getNidarea()).orElse(null);
-    }
+    }   
 
     @Override
     @Transactional(readOnly = true)
@@ -31,4 +34,31 @@ public class CtlgAreasImpl implements ICtlgAreasService{
     return ctlgAreasDao.findById(ctlgAreas).orElse(null);
     }
     
+    /*@Override
+    @Transactional(readOnly = true)
+    public List<Object> listartodo() {
+
+        List<Object> area = new ArrayList<>();
+        
+        for(Object datos : ctlgAreasDao.findAll())
+        {
+        area.add(datos);
+        }
+        
+        return area;
+        
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Object datosSeleccionado(Object objet) {
+        return ctlgAreasDao.findById(ctlgAreas.getNidarea()).orElse(null);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Object datosSeleccionadoInt(Integer idEntero) {
+        return ctlgAreasDao.findById(idEntero).orElse(null);
+    }*/
+
 }

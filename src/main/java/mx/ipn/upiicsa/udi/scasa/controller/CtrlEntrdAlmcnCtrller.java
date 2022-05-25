@@ -1,5 +1,7 @@
 package mx.ipn.upiicsa.udi.scasa.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import mx.ipn.upiicsa.udi.scasa.entitys.CtrlEntrAlmacen;
@@ -18,10 +20,11 @@ public class CtrlEntrdAlmcnCtrller {
 
     @Autowired
     private ICtlgEntrdAlmcnService iCtlgEntrdAlmcnService;
-
+   
     @GetMapping("/Entradas")
     public String ctrlEntradasAlmacen(Model model) {
         var entradas = iCtlgEntrdAlmcnService.listarEntrdAlmcn();
+        log.info("Lista devuelta por las entradas: " + entradas);
         log.info("Ejecutando controlador para listar las entradas al almacen");
         model.addAttribute("entradasAlmacen", entradas);
         return "entradas_almacen";
@@ -43,6 +46,8 @@ public class CtrlEntrdAlmcnCtrller {
     
     @PostMapping("/GuardarEntrada")
     public String guardarEntrada(@Valid CtrlEntrAlmacen ctrlEntrAlmacen, Errors errores){
+        //LocalDate esDateFormat = LocalDate.parse(ctrlEntrAlmacen.getDfecent().toString(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        //ctrlEntrAlmacen.setDfecent(esDateFormat);
         if(errores.hasErrors())
         {
         return "alta_entradaAlmacen";
@@ -54,7 +59,7 @@ public class CtrlEntrdAlmcnCtrller {
     @GetMapping("/AgregarEntradaAlmacen/{nidenta}")
     public String actualizarEntrada(CtrlEntrAlmacen ctrlEntrAlmacen, Model model){
         ctrlEntrAlmacen = iCtlgEntrdAlmcnService.entrdAlmcnSeleccionado(ctrlEntrAlmacen);
-        model.addAttribute("entradaAlmacen",ctrlEntrAlmacen);
+        model.addAttribute("ctrlEntrAlmacen",ctrlEntrAlmacen);
         log.info("Ejecutando controlador para la busqueda de una entrada seleccionada para su actualizacion");
         return "alta_entradaAlmacen";
     }

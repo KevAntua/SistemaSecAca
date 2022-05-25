@@ -9,12 +9,12 @@
     </head>
     <body>
         <h1>Alta de Unidades de Medida</h1>
-        <a th:href="@{/Medidas}">Regresar</a>
+        <a th:href="@{/UnidadesMedida}">Regresar</a>
         <br/>
         <form th:action="@{/GuardarMedida}" method="post" th:object="${catalogoUniMedida}">
             <br/>
             <label for="ncvunmd">Clave de la unidad de medida</label>
-            <input type="text" name="ncvunmd" th:field="*{ccvartl}"/>
+            <input type="text" name="ncvunmd" th:field="*{ncvunmd}"/>
             <span th:if="${#fields.hasErrors('ncvunmd')}" th:errors="*{ncvunmd}">Error en clave de la medida</span>
             <br/>
             <label for="cdescrip">Descripci&oacute;n de la medida</label>

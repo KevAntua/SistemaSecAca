@@ -14,9 +14,10 @@ public class CtrlDetalEntrAlmacen implements Serializable {
 private static final long serialVersionUID = 1L;
 
 @NotNull
-private int nidenta;      // ID de entrada
+private int nidenta;     // ID de entrada
 @NotNull
 private int nanioea;     // Año de la entrada
+
 @Id
 @NotNull
 private int niddent;     // ID detalle entrada
