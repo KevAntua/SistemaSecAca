@@ -2,31 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org" 
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      <link rel="stylesheet" href="CSS/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="CSS/styleform2.css" as="style" />
+    <link rel="stylesheet" href="CSS/styleform2.css" />
     <head th:replace="layout/plantilla :: head">
         <title>Alta de unidades de medida</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Alta de Unidades de Medida</h1>
+        <main class="contenedor sombra">
+            
+         <h1 class="cabeceraP">Alta de Unidades de Medida</h1>
+         <div class="boton divbtn">
         <a th:href="@{/UnidadesMedida}">Regresar</a>
-        <br/>
+    </div>
+    <div class="formulario">
         <form th:action="@{/GuardarMedida}" method="post" th:object="${catalogoUniMedida}">
-            <br/>
+            <fieldset>
+                <legend>llena todos los campos</legend>
+            <div class="">            
+            <div class="campo">
             <label for="ncvunmd">Clave de la unidad de medida</label>
-            <input type="text" name="ncvunmd" th:field="*{ncvunmd}"/>
+            <input id="dd1" class="input-text" type="text" name="ncvunmd" th:field="*{ncvunmd}"/>
+            <br>
             <span th:if="${#fields.hasErrors('ncvunmd')}" th:errors="*{ncvunmd}">Error en clave de la medida</span>
-            <br/>
+            </div>            
+            <div class="campo">
             <label for="cdescrip">Descripci&oacute;n de la medida</label>
-            <input type="text" name="cdescrip" th:field="*{cdescrip}"/>
+            <input id="dd2" class="input-text" type="text" name="cdescrip" th:field="*{cdescrip}"/>
+            <br>
             <span th:if="${#fields.hasErrors('cdescrip')}" th:errors="*{cdescrip}">Error en descripcion de la medida</span>
-            <br/>
+            </div>            
+            <div class="campo">
             <label for="cvigent">Estatus de vigencia</label>
-            <input type="text" name="cvigent" th:field="*{cvigent}"/>
+            <input id="dd3" class="input-text" type="text" name="cvigent" th:field="*{cvigent}"/>
+            <br>
             <span th:if="${#fields.hasErrors('cvigent')}" th:errors="*{cvigent}">Error estatus de la medida</span>
-            <br/>
-            <input type="submit" name="guardarMedida" value="GuardarMedida"/>
+            </div>           
+            
+            </div>
+            <div class="displayFR">
+                <input class="boton" type="submit" name="guardarMedida" value="Guardar Medida"/>
+            </div>
+            
+            </fieldset>
         </form>
+        </div>
         <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

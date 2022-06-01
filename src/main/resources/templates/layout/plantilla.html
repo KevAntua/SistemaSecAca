@@ -13,9 +13,16 @@
         <link rel="stylesheet" type="text/css" href="css/Style.css"/>    
         <link rel="preload" href="css/normalize.css">
         <link rel="stylesheet" href="css/normalize.css"> 
+        <link rel="preload" href="css/styleform2.css" as="style" />
+        <link rel="stylesheet" href="css/styleform2.css" />
+         <link rel="preload" href="css/styleform.css" as="style" />
+        <link rel="stylesheet" href="css/styleform.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet"/>
     </head>
                 <body>
-                    <header th:fragment="header">
+                    <header th:replace="layout/PlantillaHP :: header">
                         <h1> &Aacute;reas y Responsables prueba de GIT</h1>
                     </header>
 

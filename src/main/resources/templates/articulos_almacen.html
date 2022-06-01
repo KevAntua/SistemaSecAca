@@ -4,11 +4,22 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:replace="layout/plantilla :: head">
         <title>Catalogo de Articulos</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="CSS/styleform2.css" as="style" />
+    <link rel="stylesheet" href="CSS/styleform2.css" />
     </head>
     <body>
-        <h1>Articulos del Almacen</h1>
+        <header th:replace="layout/PlantillaHP :: header">
+            
+        </header>
+        <h1 class="cabeceraP"> Articulos del Almacen</h1>
+        <div class="boton divbtn">                    
         <a sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')" th:href="@{/AgregarArticulo}">Dar de alta art&iacute;culo</a>
+    </div>
         <div th:if="${artsAlmacen != null}"> <!-- and !artsAlmacen.empty}" -->
+            <div class="ditable">
             <table border="1">
                 <tr>
                     <th>Tipo de art&iacute;culo</th>
@@ -30,11 +41,17 @@
                     <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/AgregarArticulo/} + ${vtctlgartsAlmacen.ccvartl}" th:text="Editar"/></td>
                     <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/EliminarArticulo(ccvartl=${vtctlgartsAlmacen.ccvartl})}" th:text="Eliminar"/></td>
                 </tr>
+           
             </table>
+        </div>
         </div>
         <div th:if="${artsAlmacen == null}"> <!-- or artsAlmacen.empty}"-->
             La lista de articulos se encuentra vacia o a ocurrido un error en la conexi&oacute;n
         </div>
-        <footer th:replace="layout/plantilla :: footer"/>
+        <footer th:replace="layout/PlantillaHP :: footer">
+                
+            </footer>
+        <!-- <footer th:replace="layout/plantilla :: footer"/>
+        -->
     </body>
 </html>

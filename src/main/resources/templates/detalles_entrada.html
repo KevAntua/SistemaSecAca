@@ -2,13 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org" 
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:replace="layout/plantilla :: head">
-        <title>Detalles de las Entradas</title>
+   <head th:replace="layout/plantilla :: head">
+        <title>Detalles de las Entradas</title>        
     </head>
     <body>
-        <h1>Detalles de las entradas al Almacen</h1>
+         <header th:replace="layout/PlantillaHP :: header">
+            
+        </header>
+        <h1 class="cabeceraP">Detalles de las entradas al Almacen</h1>
+        <div class="boton divbtn"> 
         <a sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')" th:href="@{/AgregarDtllsEntrd}">Dar de alta detalles de entrada</a>
+        </div>
         <div th:if="${dtllEntrAlmcn != null}"> <!-- and !artsAlmacen.empty}" -->
+            <div class="ditable">
             <table border="1">
                 <tr>
                     <th>Id asociado a la entrada</th>
@@ -38,9 +44,13 @@
                 </tr>
             </table>
         </div>
+        </div>
         <div th:if="${dtllEntrAlmcn == null}"> <!-- or artsAlmacen.empty}"-->
             La lista de detalles de las entradas de articulos se encuentra vacia o a ocurrido un error en la conexi&oacute;n
         </div>
-        <footer th:replace="layout/plantilla :: footer"/>
+        <footer th:replace="layout/PlantillaHP :: footer">
+            
+        </footer>
+        <!--<!-- <footer th:replace="layout/plantilla :: footer"/>-->
     </body>
 </html>

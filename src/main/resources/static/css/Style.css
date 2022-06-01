@@ -9,6 +9,10 @@ body{
     font-size: 16px;
     
 }
+.barra{
+    display: flex;
+    justify-content: flex-end;
+}
 
 .contenedor {
     max-width: 70rem;  
@@ -45,12 +49,8 @@ body{
     background-color: #333333;
 }
 .barra-links{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 8px;
-    margin-left: auto;
-    margin-right: 0;
+   color: #848484;
+
 }
 .barra-links a{
     
@@ -117,14 +117,14 @@ main{
     font-weight: 300;
     min-height: 56px;
     padding-top: 5rem;
-    padding-left: 13rem;
-    padding-right: 13rem;
+    padding-left: 15rem;
+    padding-right: 15rem;
 
 }
 .row{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
 
 }
 @media(min-width: 1000px){
@@ -132,11 +132,12 @@ main{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+    
     }    
 }
 
 .row img{
-    max-width: 25rem;
+    max-width: 29rem;
 max-height: 6.7rem;
   
 }
@@ -174,4 +175,14 @@ max-height: 6.7rem;
   display: inline;
  margin-left: 4rem;
  margin-top: 1rem;
+}
+
+.displayFRS a{
+   padding-right: 0.75rem;
+   padding-left: 0.75rem
+}
+.displayFR2{
+    display: flex;
+    justify-content: flex-end;
+    
 }
