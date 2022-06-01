@@ -6,8 +6,13 @@
         <title>Catalogo de las Unidades de Medida</title>
     </head>
     <body>
-         <h1>Unidades de Medida</h1>
+         <header th:replace="layout/PlantillaHP :: header">
+            
+        </header>
+           <h1 class="cabeceraP">Unidades de Medida</h1>
+           <div class="boton divbtn">
         <a sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')" th:href="@{/AgregarMedida}">Dar de alta medida</a>
+        </div>
         <div th:if="${unidadesMedida != null}"> <!-- and !artsAlmacen.empty}" -->
             <table border="1">
                 <tr>
@@ -23,12 +28,16 @@
                     <td th:text="${vunidadesMedida.cvigent}">Muestra el estatus de la medida</td>
                     <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/AgregarMedida/} + ${vunidadesMedida.ncvunmd}" th:text="Editar"/></td>
                     <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/EliminarMedida(ncvunmd=${vunidadesMedida.ncvunmd})}" th:text="Eliminar"/></td>
-                </tr>
+                </tr>                
             </table>
         </div>
         <div th:if="${unidadesMedida == null}"> <!-- or artsAlmacen.empty}"-->
             La lista de unidades de medida se encuentra vacia o a ocurrido un error en la conexi&oacute;n
         </div>
-        <footer th:replace="layout/plantilla :: footer"/>
+        <footer th:replace="layout/PlantillaHP :: footer">
+                
+            </footer>
+        <!-- <footer th:replace="layout/plantilla :: footer"/>  -->
+        
     </body>
 </html>

@@ -8,8 +8,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Entradas del Almacen</h1>
-        <a sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')" th:href="@{/AgregarEntradaAlmacen}">Nueva Entrada al Almacen</a>
+         <header th:replace="layout/PlantillaHP :: header">
+            
+         </header>
+        
+        <h1 class="cabeceraP">Entradas del Almacen</h1>
+        <div class="boton divbtn">
+             <a sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')" th:href="@{/AgregarEntradaAlmacen}">Nueva Entrada al Almacen</a>
+        </div>
+       
         <div th:if="${entradasAlmacen != null}"> <!-- and !artsAlmacen.empty}" -->
             <table border="1">
                 <tr>
@@ -37,6 +44,10 @@
         <div th:if="${entradasAlmacen == null}"> <!-- or artsAlmacen.empty}"-->
             La lista de articulos se encuentra vacia o a ocurrido un error en la conexi&oacute;n
         </div>
-        <footer th:replace="layout/plantilla :: footer"/>
+        <footer th:replace="layout/PlantillaHP :: footer">
+                
+        </footer>
+        <!-- <footer th:replace="layout/plantilla :: footer"/> -->
+        
     </body>
 </html>

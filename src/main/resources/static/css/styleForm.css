@@ -12,6 +12,7 @@ body {
     max-width: 120rem;
     /* si esta disponible utiliza 1200 px*/
     margin: 0 auto;
+    height: auto;
 }
 
 .sombra {

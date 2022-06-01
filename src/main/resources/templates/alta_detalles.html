@@ -16,8 +16,12 @@
 </head>
 
 <body>
+     <header th:replace="layout/PlantillaHP :: header">
+            
+        </header>
+     
     <main class="contenedor sombra">
-        <h1 class="cabeceraP">Alta de detalle de la entrada del art&iacute;culo</h1>
+       <h1 class="cabeceraP">Alta de detalle de la entrada del art&iacute;culo</h1>
         <div class="boton divbtn">
             <a th:href="@{/DetallesEntradas}">Regresar</a>
         </div>
@@ -88,7 +92,11 @@
             </form>
         </div>
     </main>
-    <footer th:replace="layout/plantilla :: footer" />
+      <footer th:replace="layout/PlantillaHP :: footer">
+                
+      </footer>
+    <!--  <footer th:replace="layout/plantilla :: footer" /> -->
+     
 </body>
 
 </html>

@@ -5,16 +5,14 @@
 <head th:replace="layout/plantilla :: head">
     <title>Alta de Existencia de Articulo</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="CSS/normalize.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preload" href="CSS/styleform2.css" as="style" />
-    <link rel="stylesheet" href="CSS/styleform2.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />   
 </head>
 
 <body>
+    <header th:replace="layout/PlantillaHP :: header">            
+        </header>
+        
+        
     <main class="contenedor sombra">
 
         <h1 class="cabeceraP"> Alta de Existencia de Articulo</h1>
@@ -64,8 +62,9 @@
             </form>
         </div>
     </main>
-    <footer th:replace="layout/plantilla :: footer" >
-    </footer>
+     <footer th:replace="layout/PlantillaHP :: footer">
+                
+            </footer>
 </body>
 
 </html>
