@@ -1,53 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:replace="layout/plantilla :: head">
-        <title>Entradas del Almacen</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-         <header th:replace="layout/PlantillaHP :: header">
-            
-         </header>
-        
-        <h1 class="cabeceraP">Entradas del Almacen</h1>
-        <div class="boton divbtn">
-             <a sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')" th:href="@{/AgregarEntradaAlmacen}">Nueva Entrada al Almacen</a>
-        </div>
-       
-        <div th:if="${entradasAlmacen != null}"> <!-- and !artsAlmacen.empty}" -->
-            <table border="1">
-                <tr>
-                    <th>Id del registro de la entrada</th>
-                    <th>Año de la entrada</th>
-                    <th>Fecha de la entrada</th>
-                    <th>Descripci&oacute;n del art&iacute;culo</th>
-                    <th>Cantidad</th>
-                    <th>Estatus de vigencia</th>
-                    <th sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Modificar datos</th>
-                    <th sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Eliminar definitivamente</th>
-                </tr>
-                <tr th:each="ventradasAlmacen : ${entradasAlmacen}"><!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
-                    <td th:text="${ventradasAlmacen.nidenta}">Muestra el id del registro de la entrada</td>
-                    <td th:text="${ventradasAlmacen.nanioea}">Muestra el año de la entrada</td>
-                    <td th:text="${#dates.format(ventradasAlmacen.dfecent,'dd-MMM-yyyy')}">Muestra la fecha de la entrada</td>
-                    <td th:text="${ventradasAlmacen.detentrada.ccvartl}">Muestra la descripci&oacute;n del art&iacute;culo</td>
-                    <td th:text="${ventradasAlmacen.detentrada.ncantid}">Muestra la cantidad</td>
-                    <td th:text="${ventradasAlmacen.cstatus}">Muestra el estatus de vigencia</td>
-                    <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/AgregarEntradaAlmacen/} + ${ventradasAlmacen.nidenta}" th:text="Editar"/></td>
-                    <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/EliminarEntrada(nidenta=${ventradasAlmacen.nidenta})}" th:text="Eliminar"/></td>
-                </tr>
-            </table>
-        </div>
-        <div th:if="${entradasAlmacen == null}"> <!-- or artsAlmacen.empty}"-->
-            La lista de articulos se encuentra vacia o a ocurrido un error en la conexi&oacute;n
-        </div>
-        <footer th:replace="layout/PlantillaHP :: footer">
-                
-        </footer>
-        <!-- <footer th:replace="layout/plantilla :: footer"/> -->
-        
-    </body>
+<head th:replace="layout/plantilla :: head">
+    <title>Entradas del Almacen</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header th:replace="layout/PlantillaHP :: header">
+</header>
+
+<h1 class="cabeceraP">Entradas del Almacen</h1>
+<div class="boton divbtn">
+    <a sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"
+       th:href="@{/AgregarEntradaAlmacen}">Nueva Entrada al Almacen</a>
+</div>
+
+<div th:if="${entradasAlmacen != null}"> <!-- and !artsAlmacen.empty}" -->
+    <table border="1">
+        <tr>
+            <th>Id del registro de la entrada</th>
+            <th>Año de la entrada</th>
+            <th>Fecha de la entrada</th>
+            <th>Descripci&oacute;n del art&iacute;culo</th>
+            <th>Cantidad</th>
+            <th>Estatus de vigencia</th>
+            <th sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Modificar datos</th>
+            <th sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Eliminar
+                definitivamente
+            </th>
+        </tr>
+        <tr th:each="ventradasAlmacen : ${entradasAlmacen}">
+            <!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
+            <td th:text="${ventradasAlmacen.nidenta}">Muestra el id del registro de la entrada</td>
+            <td th:text="${ventradasAlmacen.nanioea}">Muestra el año de la entrada</td>
+            <td th:text="${#dates.format(ventradasAlmacen.dfecent,'dd-MMM-yyyy')}">Muestra la fecha de la entrada</td>
+            <td th:text="${ventradasAlmacen.detentrada.ccvartl}">Muestra la descripci&oacute;n del art&iacute;culo</td>
+            <td th:text="${ventradasAlmacen.detentrada.ncantid}">Muestra la cantidad</td>
+            <td th:text="${ventradasAlmacen.cstatus}">Muestra el estatus de vigencia</td>
+            <td sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a
+                    th:href="@{/AgregarEntradaAlmacen/} + ${ventradasAlmacen.nidenta}" th:text="Editar"/></td>
+            <td sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a
+                    th:href="@{/EliminarEntrada(nidenta=${ventradasAlmacen.nidenta})}" th:text="Eliminar"/></td>
+        </tr>
+    </table>
+</div>
+<div th:if="${entradasAlmacen == null}"> <!-- or artsAlmacen.empty}"-->
+    La lista de articulos se encuentra vacia o a ocurrido un error en la conexi&oacute;n
+</div>
+<footer th:replace="layout/PlantillaHP :: footer">
+
+</footer>
+<!-- <footer th:replace="layout/plantilla :: footer"/> -->
+
+</body>
 </html>

@@ -1,49 +1,54 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-     
-    <head th:replace="layout/plantilla :: head">
-        <title>Existencia de Articulos</title>        
-    </head>
-    <body>
-         <header th:replace="layout/PlantillaHP :: header">
-            
-        </header>
-        <h1 class="cabeceraP">Existencias del Almacen</h1>
-        <div class="boton divbtn" sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')" > 
-        <a th:href="@{/AgregarExistencia}">Dar de alta existencia de art&iacute;culo</a>
-        </div>
-        <div th:if="${existenciaAlmacen != null}"> <!-- and !artsAlmacen.empty}" -->
-            <table border="1">
-                <tr>
-                    <th>Tipo de art&iacute;culo</th>
-                    <th>Clave del art&iacute;culo</th>
-                    <th>Cantidad en existencia del art&iacute;culo</th>
-                    <th>Clave de la unidad de medida</th>
-                    <th>Estatus de vigencia</th>
-                    <th sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Modificar datos</th>
-                    <th sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Eliminar definitivamente</th>
-                </tr>
-                <tr th:each="vexistenciaAlmacen : ${existenciaAlmacen}"><!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
-                    <td th:text="${vexistenciaAlmacen.ctipart}">Muestra el tipo de art&iacute;culo</td>
-                    <td th:text="${vexistenciaAlmacen.ccvartl}">Muestra la clave del art&iacute;culo</td>
-                    <td th:text="${vexistenciaAlmacen.ncantid}">Muestra la cantidad en existencia del art&iacute;culo</td>
-                    <td th:text="${vexistenciaAlmacen.ncvunmd}">Muestra la clave de la unidad de medida</td>
-                    <td th:text="${vexistenciaAlmacen.cvigent}">Muestra el estatus de vigencia</td>
-                    <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/AgregarExistencia/} + ${vexistenciaAlmacen.ccvartl}" th:text="Editar"/></td>
-                    <td sec:authorize="hasAnyRole('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a th:href="@{/EliminarExistencia(ccvartl=${vexistenciaAlmacen.ccvartl})}" th:text="Eliminar"/></td>
-                </tr>                
-                
-            </table>
-        </div>
-        <div th:if="${existenciaAlmacen == null}"> <!-- or artsAlmacen.empty}"-->
-            La lista de articulos se encuentra vacia o a ocurrido un error en la conexi&oacute;n
-        </div>
-        <footer th:replace="layout/PlantillaHP :: footer">
-                
-        </footer>
-        <!--  <footer th:replace="layout/plantilla :: footer"/> -->
-       
-    </body>
+
+<head th:replace="layout/plantilla :: head">
+    <title>Existencia de Articulos</title>
+</head>
+<body>
+<header th:replace="layout/PlantillaHP :: header">
+
+</header>
+<h1 class="cabeceraP">Existencias del Almacen</h1>
+<div class="boton divbtn" sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">
+    <a th:href="@{/AgregarExistencia}">Dar de alta existencia de art&iacute;culo</a>
+</div>
+<div th:if="${existenciaAlmacen != null}"> <!-- and !artsAlmacen.empty}" -->
+    <table border="1">
+        <tr>
+            <th>Tipo de art&iacute;culo</th>
+            <th>Clave del art&iacute;culo</th>
+            <th>Cantidad en existencia del art&iacute;culo</th>
+            <th>Clave de la unidad de medida</th>
+            <th>Estatus de vigencia</th>
+            <th sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Modificar datos</th>
+            <th sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Eliminar
+                definitivamente
+            </th>
+        </tr>
+        <tr th:each="vexistenciaAlmacen : ${existenciaAlmacen}">
+            <!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
+            <td th:text="${vexistenciaAlmacen.ctipart}">Muestra el tipo de art&iacute;culo</td>
+            <td th:text="${vexistenciaAlmacen.ccvartl}">Muestra la clave del art&iacute;culo</td>
+            <td th:text="${vexistenciaAlmacen.ncantid}">Muestra la cantidad en existencia del art&iacute;culo</td>
+            <td th:text="${vexistenciaAlmacen.ncvunmd}">Muestra la clave de la unidad de medida</td>
+            <td th:text="${vexistenciaAlmacen.cvigent}">Muestra el estatus de vigencia</td>
+            <td sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a
+                    th:href="@{/AgregarExistencia/} + ${vexistenciaAlmacen.ccvartl}" th:text="Editar"/></td>
+            <td sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a
+                    th:href="@{/EliminarExistencia(ccvartl=${vexistenciaAlmacen.ccvartl})}" th:text="Eliminar"/></td>
+        </tr>
+
+    </table>
+</div>
+<div th:if="${existenciaAlmacen == null}"> <!-- or artsAlmacen.empty}"-->
+    La lista de articulos se encuentra vacia o a ocurrido un error en la conexi&oacute;n
+</div>
+<footer th:replace="layout/PlantillaHP :: footer">
+
+</footer>
+<!--  <footer th:replace="layout/plantilla :: footer"/> -->
+
+</body>
 </html>

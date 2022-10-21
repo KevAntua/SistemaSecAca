@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/plantilla :: head">
+    <title>&Aacute;reas y Responsables</title>
     <head th:replace="layout/plantilla :: head">
-        <title>&Aacute;reas y Responsables</title>
-        <head th:replace="layout/plantilla :: head">
-     
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet"/>
-   
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet"/>
     </head>
-    <body>
-        <header th:replace="layout/PlantillaHP :: header">
-            
-        </header>
-        
-        <h1 class="cabeceraP">Areas</h1>
-         <div class="boton divbtn">
-        <a th:href="@{/UnidadesMedida}">Regresar</a>
+<body>
+<header th:replace="layout/PlantillaHP :: header">
+</header>
+
+<h1 class="cabeceraP">Areas</h1>
+<div class="boton divbtn">
+    <a th:href="@{/UnidadesMedida}">Regresar</a>
+</div>
+<div th:if="${catalogoAreas != null}"> <!--and !catalogoAreas.empty !tblUserList.isEmpty()-->
+    <div class="ditable">
+        <table border="1">
+            <tr>
+                <th>Id del &aacute;rea</th>
+                <th>Descripci&oacute;n del &aacute;rea</th>
+                <th>Nombre del responsable</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Siglas del &aacute;rea</th>
+                <th>Id del &aacute;rea dependiente</th>
+                <th>Estatus de vigencia</th>
+                <th>Modificar datos</th>
+            </tr>
+            <tr th:each="vtctlgareas : ${catalogoAreas}">
+                <!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
+                <td th:text="${vtctlgareas.nidarea}">Muestra el id del &aacute;rea</td>
+                <td th:text="${vtctlgareas.cdescri}">Muestra la descripci&oacute;n del &aacute;rea</td>
+                <td th:text="${vtctlgareas.cnomres}">Muestra el nombre del esponsable del &acute;rea</td>
+                <td th:text="${vtctlgareas.capepat}">Muestra el apellido paterno</td>
+                <td th:text="${vtctlgareas.capemat}">Muestra el apellido materno</td>
+                <td th:text="${vtctlgareas.csiglas}">Muestra las siglas del &acute;rea</td>
+                <td th:text="${vtctlgareas.nidared}">Ninguna</td>
+                <td th:text="${vtctlgareas.cvigent}">Muestra el status de vigencia</td>
+                <!--<td><a th:href="@{/Areas/} + ${vtctlgareas.nidarea}" th:text="Editar"/></td>-->
+            </tr>
+
+        </table>
     </div>
-        <div th:if="${catalogoAreas != null}"> <!--and !catalogoAreas.empty !tblUserList.isEmpty()-->
-            <div class="ditable">
-            <table border="1">
-                <tr>
-                    <th>Id del &aacute;rea</th>
-                    <th>Descripci&oacute;n del &aacute;rea</th>
-                    <th>Nombre del responsable</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
-                    <th>Siglas del &aacute;rea</th>
-                    <th>Id del &aacute;rea dependiente</th>
-                    <th>Estatus de vigencia</th>
-                    <th>Modificar datos</th>
-                </tr>
-                <tr th:each="vtctlgareas : ${catalogoAreas}"><!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
-                    <td th:text="${vtctlgareas.nidarea}">Muestra el id del &aacute;rea</td>
-                    <td th:text="${vtctlgareas.cdescri}">Muestra la descripci&oacute;n del &aacute;rea</td>
-                    <td th:text="${vtctlgareas.cnomres}">Muestra el nombre del esponsable del &acute;rea</td>
-                    <td th:text="${vtctlgareas.capepat}">Muestra el apellido paterno</td>
-                    <td th:text="${vtctlgareas.capemat}">Muestra el apellido materno</td>
-                    <td th:text="${vtctlgareas.csiglas}">Muestra las siglas del &acute;rea</td>
-                    <td th:text="${vtctlgareas.nidared}">Ninguna</td>
-                    <td th:text="${vtctlgareas.cvigent}">Muestra el status de vigencia</td>
-                    <!--<td><a th:href="@{/Areas/} + ${vtctlgareas.nidarea}" th:text="Editar"/></td>-->
-                </tr>
-                
-            </table>
-        </div>
-        <div th:if="${catalogoAreas == null}"> <!--or catalogoAreas.empty or areaseleccionada == null or areaseleccionada.empty-->
-            La lista de personas se encuentra vacia o a ocurrido un error en la conexi&oacute;n    
-        </div>
-            <footer th:replace="layout/PlantillaHP :: footer">
-                
-            </footer>
-    </body>
+    <div th:if="${catalogoAreas == null}">
+        <!--or catalogoAreas.empty or areaseleccionada == null or areaseleccionada.empty-->
+        La lista de personas se encuentra vacia o a ocurrido un error en la conexi&oacute;n
+    </div>
+</div>
+<footer th:replace="layout/PlantillaHP :: footer">
+</footer>
+</body>
 </html>

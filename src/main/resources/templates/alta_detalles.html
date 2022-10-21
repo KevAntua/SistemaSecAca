@@ -1,102 +1,101 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="layout/plantilla :: head">
     <title>Alta del detalle de la entrada de un art&iacute;culo</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="preload" href="CSS/normalize.css">
     <link rel="stylesheet" href="CSS/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preload" href="CSS/styleForm.css" as="style" />
-    <link rel="stylesheet" href="CSS/styleForm.css" />
+    <link rel="preload" href="CSS/styleForm.css" as="style"/>
+    <link rel="stylesheet" href="CSS/styleForm.css"/>
 </head>
 
 <body>
-     <header th:replace="layout/PlantillaHP :: header">
-            
-        </header>
-     
-    <main class="contenedor sombra">
-       <h1 class="cabeceraP">Alta de detalle de la entrada del art&iacute;culo</h1>
-        <div class="boton divbtn">
-            <a th:href="@{/DetallesEntradas}">Regresar</a>
-        </div>
-        <div class="formulario">
-            <form th:action="@{/GuardarDtllsEntrd}" method="post" th:object="${ctrlDetalEntrAlmacen}">
-                <fieldset>
-                    <legend>llena todos los campos</legend>
-                    <div class="contenedor-campos">
-                        <div class="campo">
+<header th:replace="layout/PlantillaHP :: header">
+</header>
+
+<main class="contenedor sombra">
+    <h1 class="cabeceraP">Alta de detalle de la entrada del art&iacute;culo</h1>
+    <div class="boton divbtn">
+        <a th:href="@{/DetallesEntradas}">Regresar</a>
+    </div>
+    <div class="formulario">
+        <form th:action="@{/GuardarDtllsEntrd}" method="post" th:object="${ctrlDetalEntrAlmacen}">
+            <fieldset>
+                <legend>llena todos los campos</legend>
+                <div class="contenedor-campos">
+                    <div class="campo">
                         <label for="nidenta">Id del registro de la entrada</label>
-                        <input class="input-text" type="text" name="nidenta" th:field="*{nidenta}" />
-                        <span th:if="${#fields.hasErrors('nidenta')}" th:errors="*{nidenta}">Error en el id del registro
+                        <input class="input-text" type="text" name="nidenta" th:field="*{id.nidenta}"/>
+                        <span th:if="${#fields.hasErrors('id.nidenta')}" th:errors="*{id.nidenta}">Error en el id del registro
                             de la entrada</span>
-                        </div>
-                        <div class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="nanioea">Año del registro de la entrada</label>
-                        <input class="input-text" type=number name="nanioea" th:field="*{nanioea}" />
-                        <span th:if="${#fields.hasErrors('nanioea')}" th:errors="*{nanioea}">Error en el año del
+                        <input class="input-text" type=number name="nanioea" th:field="*{id.nanioea}"/>
+                        <span th:if="${#fields.hasErrors('id.nanioea')}" th:errors="*{id.nanioea}">Error en el año del
                             registro de la entrada</span>
-                        </div>
-                        <div class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="niddent">Id del detalle de la entrada</label>
-                        <input class="input-text" type="text" name="niddent" th:field="*{niddent}" />
-                        <span th:if="${#fields.hasErrors('niddent')}" th:errors="*{niddent}">Error en el id del detalle
+                        <input class="input-text" type="text" name="niddent" th:field="*{id.niddent}"/>
+                        <span th:if="${#fields.hasErrors('id.niddent')}" th:errors="*{id.niddent}">Error en el id del detalle
                             de la entrada</span>
-                        </div>
-                        <div class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="tipo">Tipo de art&iacute;culo</label>
-                        <input class="input-text" type="text" name="tipo" th:field="*{ctipart}" />
+                        <input class="input-text" type="text" name="tipo" th:field="*{ctipart}"/>
                         <span th:if="${#fields.hasErrors('ctipart')}" th:errors="*{ctipart}">Error tipo de
                             articulo</span>
-                        </div>
-                        <div class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="ccvartl">Clave del art&iacute;culo</label>
-                        <input class="input-text" type="text" name="ccvartl" th:field="*{ccvartl}" />
+                        <input class="input-text" type="text" name="ccvartl" th:field="*{ccvartl}"/>
                         <span th:if="${#fields.hasErrors('ccvartl')}" th:errors="*{ccvartl}">Error clave de
                             articulo</span>
-                        </div>
-                        <div class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="ncvunmd">Clave de la unidad de medida del art&iacute;culo</label>
-                        <input class="input-text" type="text" name="ncvunmd" th:field="*{ncvunmd}" />
+                        <input class="input-text" type="text" name="ncvunmd" th:field="*{ncvunmd}"/>
                         <span th:if="${#fields.hasErrors('ncvunmd')}" th:errors="*{ncvunmd}">Error de la clave de unidad
                             de medida</span>
-                        </div>
-                        <div class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="ncantid">Cantidad en existencia del art&iacute;culo</label>
-                        <input class="input-text" type="text" name="ncantid" th:field="*{ncantid}" />
+                        <input class="input-text" type="text" name="ncantid" th:field="*{ncantid}"/>
                         <span th:if="${#fields.hasErrors('ncantid')}" th:errors="*{ncantid}">Error en la cantidad en
                             existencia del art&iacute;culo</span>
-                        </div>
-                        <div class="campo">                            
+                    </div>
+                    <div class="campo">
                         <label for="ncostou">Costo unitario del art&iacute;culo</label>
-                        <input class="input-text" type="text" name="ncostou" th:field="*{ncostou}" />
+                        <input class="input-text" type="text" name="ncostou" th:field="*{ncostou}"/>
                         <span th:if="${#fields.hasErrors('ncostou')}" th:errors="*{ncostou}">Error en el costo unitario
                             del art&iacute;culo</span>
-                        </div>
-                        <div class="campo">
+                    </div>
+                    <div class="campo">
                         <label for="cstatus">Estatus de vigencia</label>
-                        <input class="input-text" type="text" name="cstatus" th:field="*{cstatus}" />
+                        <input class="input-text" type="text" name="cstatus" th:field="*{cstatus}"/>
                         <span th:if="${#fields.hasErrors('cstatus')}" th:errors="*{cstatus}">Error en estatus del
-                            registro de la entrada</span>                       
-                        </div> 
+                            registro de la entrada</span>
                     </div>
-                    <div class="displayFR">
-                        <input class="boton" type="submit" name="guardarDtllsEntrd" value="Guardar Entrda" />
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </main>
-      <footer th:replace="layout/PlantillaHP :: footer">
-                
-      </footer>
-    <!--  <footer th:replace="layout/plantilla :: footer" /> -->
-     
+                </div>
+                <div class="displayFR">
+                    <input class="boton" type="submit" name="guardarDtllsEntrd" value="Guardar Entrda"/>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</main>
+<footer th:replace="layout/PlantillaHP :: footer">
+
+</footer>
+<!--  <footer th:replace="layout/plantilla :: footer" /> -->
+
 </body>
 
 </html>
