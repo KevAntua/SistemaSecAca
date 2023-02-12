@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/plantilla :: head">
+    <title>Alta de Existencia de Articulo</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+<header th:replace="layout/PlantillaHP :: header">
+</header>
+
+<main class="contenedor sombra">
+
+    <h1 class="cabeceraP"> Alta de Existencia de Articulo</h1>
+    <div class="boton divbtn">
+        <a th:href="@{/ExistenciasAlmacen}">Regresar</a>
+    </div>
+    <div class="formulario">
+        <form th:action="@{/GuardarExistencia}" method="post" th:object="${ctrlExisAlmacen}">
+            <fieldset>
+                <legend>llena todos los campos</legend>
+                <div class="contenedor-campos">
+                    <div id="d1" class="campo">
+                        <label for="tipo">Tipo de art&iacute;culo</label>
+                        <input class="input-text" type="text" name="tipo" th:field="*{id.ctipart}"/>
+                        <span th:if="${#fields.hasErrors('id.ctipart')}" th:errors="*{id.ctipart}">Error tipo de
+                                articulo</span>
+                    </div>
+                    <div id="d2" class="campo">
+                        <label for="ccvartl">Clave del art&iacute;culo</label>
+                        <input class="input-text" type="text" name="ccvartl" th:field="*{id.ccvartl}"/>
+                        <span th:if="${#fields.hasErrors('id.ccvartl')}" th:errors="*{id.ccvartl}">Error clave de
+                                articulo</span>
+                    </div>
+                    <div id="d3" class="campo">
+                        <label for="ncantid">Cantidad en existencia del art&iacute;culo</label>
+                        <input class="input-text" type="text" name="ncantid" th:field="*{ncantid}"/>
+                        <span th:if="${#fields.hasErrors('ncantid')}" th:errors="*{ncantid}">Error en la cantidad en
+                                existencia del articulo</span>
+                    </div>
+                    <div id="d4" class="campo">
+                        <label for="ncvunmd">Clave de la unidad de medida del art&iacute;culo</label>
+                        <input class="input-text" type="text" name="ncvunmd" th:field="*{ncvunmd}"/>
+                        <span th:if="${#fields.hasErrors('ncvunmd')}" th:errors="*{ncvunmd}">Error de la clave de
+                                unidad de medida</span>
+                    </div>
+                    <div id="d5" class="campo">
+                        <label for="cvigent">Estatus de vigencia</label>
+                        <input class="input-text" type="text" name="cvigent" th:field="*{cvigent}"/>
+                        <span th:if="${#fields.hasErrors('cvigent')}" th:errors="*{cvigent}">Error estatus de
+                                articulo</span>
+                    </div>
+                </div>
+                <div id="d6" class="displayFR">
+                    <input class="boton" type="submit" name="guardarExistencia" value="GuardarExistencia"/>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</main>
+<footer th:replace="layout/PlantillaHP :: footer">
+
+</footer>
+</body>
+
+</html>
