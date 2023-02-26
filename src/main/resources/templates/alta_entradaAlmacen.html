@@ -1,147 +1,200 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="layout/plantilla :: head">
-    <title>Registro de Entrada al Almacen</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Registro De Entrada al Almacen</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../css/Estilos.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
 </head>
 
 <body>
-<header th:replace="layout/PlantillaHP :: header">
-</header>
-
-<main class="contenedor sombra">
-    <h1 class="cabeceraP">Registro de Entrada al Almacen</h1>
-    <div class="boton divbtn">
-        <a th:href="@{/Entradas}">Regresar</a>
-    </div>
-    <div class="formulario">
+    <header th:replace="layout/PlantillaHP :: header">
+    </header>
+    <section>
+        <h1 class="cabeceraP">Registro de Entrada al Almacen</h1>
+    </section>
+    <main class="contenedor">
         <form th:action="@{/GuardarEntrada}" method="post" th:object="${ctrlEntrAlmacen}">
-            <fieldset>
+            <fieldset class="display_felx_row">
                 <legend>llena todos los campos</legend>
-                <div class="contenedor-campos2">
-                    <div class="campo">
-                        <label for="nidenta">Id del registro de la entrada</label>
-                        <input class="input-text" type="text" name="nidenta" th:field="*{id.nidenta}"/>
-                        <span th:if="${#fields.hasErrors('id.nidenta')}" th:errors="*{id.nidenta}">Error en el id del
-                                registro de la
-                                entrada</span>
-                    </div>
-                    <div class="campo">
-                        <label for="nanioea">Año del registro de la entrada</label>
-                        <input class="input-text" type=number name="nanioea" th:field="*{id.nanioea}"/>
-                        <span th:if="${#fields.hasErrors('id.nanioea')}" th:errors="*{id.nanioea}">Error en el año del
-                                registro de la
-                                entrada</span>
-                    </div>
-                    <div class="campo">
-                        <label for="dfecent">Fecha del registro de la entrada</label>
-                        <input class="input-text" type="date" name="dfecent" th:field="*{dfecent}"/>
-                        <span th:if="${#fields.hasErrors('dfecent')}" th:errors="*{dfecent}">Error en la fecha del
-                                registro de la
-                                entrada</span>
-                    </div>
-                    <div class="campo">
-                        <label for="cstatus">Estatus de vigencia</label>
-                        <input class="input-text" type="text" name="cstatus" th:field="*{cstatus}"/>
-                        <span th:if="${#fields.hasErrors('cstatus')}" th:errors="*{cstatus}">Error en estatus del
-                                registro de la
-                                entrada</span>
-                    </div>
+                <div class="display_felx_colum">
+                    <label for="nidenta">Id</label>
+                    <input class="formato_input" type="text" name="nidenta" th:field="*{id.nidenta}" />
+
+                </div>
+                <div class="display_felx_colum">
+                    <label for="nanioea">Año </label>
+                    <input class="formato_input" type=number name="nanioea" th:field="*{id.nanioea}" />
+
+                </div>
+                <div class="display_felx_colum">
+                    <label for="dfecent">Fecha </label>
+                    <input class="input-text" type="date" name="dfecent" th:field="*{dfecent}" />
+
+                </div>
+                <div class="display_felx_colum">
+                    <label for="cstatus">Estatus de vigencia</label>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option value="">Opcion 1</option>
+                    </select>
+                </div>
+                <div class="display_felx_center">
+                    <input class="boton" type="submit" value="Agregar">
+                    <input class="boton" type="submit" value="Regresar">
                 </div>
             </fieldset>
-
-            <fieldset>
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Año</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>02/19/2023</td>
+                    <td>Validada</td>
+                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
+                            height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                            <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                            <line x1="16" y1="5" x2="19" y2="8" />
+                        </svg></td>
+                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44"
+                            height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <line x1="4" y1="7" x2="20" y2="7" />
+                            <line x1="10" y1="11" x2="10" y2="17" />
+                            <line x1="14" y1="11" x2="14" y2="17" />
+                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                        </svg></td>
+                </tr>
+            </table>
+            <fieldset class="">
                 <legend>llena todos los campos</legend>
-                <div class="contenedor-campos3">
-                    <div class="campo1">
-                        <label for="detentrada.nidenta">Id del registro de la entrada</label>
-                        <input id="d1" class="input-text" type="text" name="nidenta" th:field="*{detentrada.nidenta}"/>
-                        <span th:if="${#fields.hasErrors('detentrada.nidenta')}"
-                              th:errors="*{detentrada.nidenta}">Error en el id
- d                               del registro de la entrada</span>
-                    </div>
-                    <div class="campo1">
-                        <label for="detentrada.nanioea">Año del registro de la entrada</label>
-                        <input id="d2" class="input-text" type=number name="detentrada.nanioea"
-                               th:field="*{detentrada.nanioea}"/>
-                        <span th:if="${#fields.hasErrors('detentrada.nanioea')}"
-                              th:errors="*{detentrada.nanioea}">Error en el año
-                                del registro de la entrada</span>
-                    </div>
-                    <div class="campo1">
-                        <label for="detentrada.niddent">Id del detalle de la entrada</label>
-                        <input id="d3" class="input-text" type="text" name="detentrada.niddent"
-                               th:field="*{detentrada.niddent}"/>
-                        <span th:if="${#fields.hasErrors('detentrada.niddent')}"
-                              th:errors="*{detentrada.niddent}">Error en el id
- d                               del detalle de la entrada</span>
-                    </div>
-                    <div class="campo1">
-                        <label for="detentrada.tipo">Tipo de art&iacute;culo</label>
-                        <input id="d4" class="input-text" type="text" name="detentrada.tipo"
-                               th:field="*{detentrada.ctipart}"/>
-                        <span th:if="${#fields.hasErrors('detentrada.ctipart')}"
-                              th:errors="*{detentrada.ctipart}">Error tipo de
-                                articulo</span>
-                    </div>
-                    <div class="campo1">
-                        <label for="detentrada.ccvartl">Clave del art&iacute;culo</label>
-                        <input id="d5" class="input-text" type="text" name="detentrada.ccvartl"
-                               th:field="*{detentrada.ccvartl}"/>
-                        <span th:if="${#fields.hasErrors('detentrada.ccvartl')}"
-                              th:errors="*{detentrada.ccvartl}">Error clave de
-                                articulo</span>
-                    </div>
-                    <div class="campo1">
-                        <label for="detentrada.ncvunmd">Clave de la unidad de medida del art&iacute;culo</label>
-                        <input id="d6" class="input-text" type="text" name="detentrada.ncvunmd"
-                               th:field="*{detentrada.ncvunmd}"/>
-                        <span th:if="${#fields.hasErrors('detentrada.ncvunmd')}"
-                              th:errors="*{detentrada.ncvunmd}">Error de la clave
-                                de unidad de medida</span>
-                    </div>
-
-                    <div class="campo1">
-                        <label for="detentrada.ncantid">Cantidad en existencia del art&iacute;culo</label>
-                        <input id="d7" class="input-text" type="text" name="detentrada.ncantid"
-                               th:field="*{detentrada.ncantid}"/>
-                        <span th:if="${#fields.hasErrors('detentrada.ncantid')}"
-                              th:errors="*{detentrada.ncantid}">Error en la
-                                cantidad en existencia del art&iacute;culo</span>
-                    </div>
-
-                    <div class="campo1">
-                        <label for="detentrada.ncostou">Costo unitario del art&iacute;culo</label>
-                        <input id="d8" class="input-text" type="text" name="detentrada.ncostou"
-                               th:field="*{detentrada.ncostou}"/>
-                        <span th:if="${#fields.hasErrors('detentrada.ncostou')}"
-                              th:errors="*{detentrada.ncostou}">Error en el costo
-                                unitario del art&iacute;culo</span>
-                    </div>
-                    <div class="campo1">
-                        <label for="detentrada.cstatus">Estatus de vigencia</label>
-                        <input id="d9" class="input-text" type="text" name="detentrada.cstatus"
-                               th:field="*{detentrada.cstatus}"/>
-                        <span th:if="${#fields.hasErrors('detentrada.cstatus')}"
-                              th:errors="*{detentrada.cstatus}">Error en estatus
-                                del registro de la entrada</span>
-                    </div>
-                    <br/>
+                <section class="display_felx_row">
+                <div class="display_felx_colum">
+                    <label for="detentrada.nidenta">No</label>
+                    <input class="formato_input" type="text" name="nidenta" th:field="*{detentrada.nidenta}" />
                 </div>
-                <div class="displayFR">
-                    <input class="boton" type="submit" name="guardarEntrada" value="Guardar Entrada"/>
+                <div class="display_felx_colum">
+                    <label for="detentrada.nanioea">Tipo</label>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option value="">Opcion 1</option>
+                    </select>
                 </div>
+                
+                <div class="display_felx_colum">
+                    <label for="detentrada.ccvartl">Clave del art&iacute;culo</label>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option value="">Opcion 1</option>
+                    </select>
+
+                </div>
+                <div class="display_felx_colum">
+                    <label for="detentrada.ncvunmd">Descripción del art&iacute;culo</label>
+                    <textarea class="formato_textbox" name="" id="" cols="30" rows="1"></textarea>
+                       
+                </div>
+            </section>
+            <section class="display_felx_row">
+                <div class="display_felx_colum">
+                    <label for="">Unidad de Medida</label>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option value="">Opcion 1</option>
+                    </select>
+                </div>
+
+                <div class="display_felx_colum">
+                    <label for="detentrada.ncantid">Cantidad</label>
+                    <input class="" type="text" name="detentrada.ncantid"
+                        th:field="*{detentrada.ncantid}" />
+                    
+                </div>
+
+                <div class="display_felx_colum">
+                    <label for="detentrada.ncostou">Costo</label>
+                    <input class="" type="text" name="detentrada.ncostou"
+                        th:field="*{detentrada.ncostou}" />
+                    
+                </div>
+                <div class="display_felx_colum">
+                    <label for="detentrada.cstatus">Estado</label>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option value="">Opcion 1</option>
+                    </select>
+                    
+                </div>
+            </section>
+           
             </fieldset>
+            <div class="display_felx_center">
+                <input class="boton" type="submit" value="Agregar">
+            </div>
+            <table>
+                <tr>
+                    <th>No.</th>
+                    <th>Tipo</th>
+                    <th>Clave del artículo</th>
+                    <th>Descripción del artículo</th>
+                    <th>Unidad de medida</th>
+                    <th>Costo</th>
+                    <th>Estado</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr> 
+                <tr>
+                    <td>1</td>
+                    <td>Cafeteria</td>
+                    <td>azucar</td>
+                    <td>Kilogramo</td>
+                    <td>1</td>
+                    <td>$35.0</td>
+                    <td>Validado</td>
+                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
+                        height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                        <line x1="16" y1="5" x2="19" y2="8" />
+                    </svg></td>
+                <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44"
+                        height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <line x1="4" y1="7" x2="20" y2="7" />
+                        <line x1="10" y1="11" x2="10" y2="17" />
+                        <line x1="14" y1="11" x2="14" y2="17" />
+                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                    </svg></td>
+                </tr>
+            </table>
         </form>
-    </div>
-</main>
-<footer th:replace="layout/PlantillaHP :: footer">
+    </main>
+    <footer th:replace="layout/PlantillaHP :: footer">
 
-</footer>
-<!-- <footer th:replace="layout/plantilla :: footer" /> -->
+    </footer>
+    <!-- <footer th:replace="layout/plantilla :: footer" /> -->
 </body>
 
 </html>

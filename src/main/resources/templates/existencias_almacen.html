@@ -4,47 +4,107 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="layout/plantilla :: head">
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../css/Estilos.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <title>Articulos</title>
     <title>Existencia de Articulos</title>
 </head>
 <body>
 <header th:replace="layout/PlantillaHP :: header">
 
 </header>
-<h1 class="cabeceraP">Existencias del Almacen</h1>
-<div class="boton divbtn" sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">
-    <a th:href="@{/AgregarExistencia}">Dar de alta existencia de art&iacute;culo</a>
-</div>
-<div th:if="${existenciaAlmacen != null}"> <!-- and !artsAlmacen.empty}" -->
-    <table border="1">
+<article>
+    <h1 class="cabeceraP">Existencias del Almacen</h1>
+</article>
+<main class="contenedor">
+    <form action="">
+        <fieldset class="display_felx_row">
+            <legend>Llene todos los campos</legend>
+            <div class="display_felx_colum">
+                <label for="">Tipo</label>
+                <select name="" id="">
+                    <option value="">Seleccione</option>
+                    <option value="">Opcion 1</option>
+                </select>
+            </div>
+            <div class="display_felx_colum">
+                <label for="">Clave</label>
+                <select name="" id="">
+                    <option value="">Seleccione</option>
+                    <option value="">Opcion 1</option>
+                </select>
+            </div>
+            <div class="display_felx_colum">
+                <label for="">Descripción</label>
+                <textarea name="" id="" cols="30" rows="1"></textarea>
+            </div>
+            <div class="display_felx_colum">
+                <label for="">Existencia</label>
+                <input class="formato_input" type="text">
+            </div>
+            <div class="display_felx_colum">
+                <label for="">Unidad de medida</label>
+                <select name="" id="">
+                    <option value="">Seleccione</option>
+                    <option value="">Opcion 1</option>
+                </select>
+            </div>
+            <div class="display_felx_colum">
+                <label for="">Estado</label>
+                <select name="" id="">
+                    <option value="">Seleccione</option>
+                    <option value="">Opcion 1</option>
+                </select>
+            </div>
+        </fieldset>
+    </form>
+    <div class="display_felx_center">
+        <input class="boton" type="submit" value="Agregar">
+        <input class="boton" type="submit" value="Regresar">
+    </div>
+    <table>
         <tr>
-            <th>Tipo de art&iacute;culo</th>
-            <th>Clave del art&iacute;culo</th>
-            <th>Cantidad en existencia del art&iacute;culo</th>
-            <th>Clave de la unidad de medida</th>
-            <th>Estatus de vigencia</th>
-            <th sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Modificar datos</th>
-            <th sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')">Eliminar
-                definitivamente
-            </th>
+            <th>Tipo</th>
+            <th>Clave</th>
+            <th>Descripción</th>
+            <th>Existencia</th>
+            <th>Unidad de medida</th>
+            <th>Estado</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
-        <tr th:each="vexistenciaAlmacen : ${existenciaAlmacen}">
-            <!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
-            <td th:text="${vexistenciaAlmacen.ctipart}">Muestra el tipo de art&iacute;culo</td>
-            <td th:text="${vexistenciaAlmacen.ccvartl}">Muestra la clave del art&iacute;culo</td>
-            <td th:text="${vexistenciaAlmacen.ncantid}">Muestra la cantidad en existencia del art&iacute;culo</td>
-            <td th:text="${vexistenciaAlmacen.ncvunmd}">Muestra la clave de la unidad de medida</td>
-            <td th:text="${vexistenciaAlmacen.cvigent}">Muestra el estatus de vigencia</td>
-            <td sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a
-                    th:href="@{/AgregarExistencia/} + ${vexistenciaAlmacen.ccvartl}" th:text="Editar"/></td>
-            <td sec:authorize="hasAnyAuthority('ROLE_Master','ROLE_APrincipal','ROLE_ASecundario')"><a
-                    th:href="@{/EliminarExistencia(ccvartl=${vexistenciaAlmacen.ccvartl})}" th:text="Eliminar"/></td>
+        <tr>
+            <td>Cafeteria</td>
+            <td>ZZZ-099</td>
+            <td>Descripción del Articulo</td>
+            <td>35</td>
+            <td>Kilo</td>
+            <td>Vigente</td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
+                height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                <line x1="16" y1="5" x2="19" y2="8" />
+            </svg></td>
+        <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44"
+                height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <line x1="4" y1="7" x2="20" y2="7" />
+                <line x1="10" y1="11" x2="10" y2="17" />
+                <line x1="14" y1="11" x2="14" y2="17" />
+                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+            </svg></td>
         </tr>
-
     </table>
-</div>
-<div th:if="${existenciaAlmacen == null}"> <!-- or artsAlmacen.empty}"-->
-    La lista de articulos se encuentra vacia o a ocurrido un error en la conexi&oacute;n
-</div>
+</main>
+
 <footer th:replace="layout/PlantillaHP :: footer">
 
 </footer>

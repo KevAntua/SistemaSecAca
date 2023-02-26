@@ -1,34 +1,69 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="layout/plantilla :: head">
-    <title>&Aacute;reas y Responsables</title>
-    <head th:replace="layout/plantilla :: head">
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-        <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet"/>
-    </head>
-<body>
-<header th:replace="layout/PlantillaHP :: header">
-</header>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<h1 class="cabeceraP">Areas</h1>
-<div class="boton divbtn">
-    <a th:href="@{/UnidadesMedida}">Regresar</a>
-</div>
-<div th:if="${catalogoAreas != null}"> <!--and !catalogoAreas.empty !tblUserList.isEmpty()-->
-    <div class="ditable">
-        <table border="1">
+<head th:replace="layout/plantilla :: head">
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../css/Estilos.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <title>Areas</title>
+</head>
+<body>
+    <header th:replace="layout/PlantillaHP :: header">
+    </header>
+    <article>
+        <h1 class="cabeceraP">Areas</h1>
+    </article>
+    <main class="contenedor">
+        <fieldset>
+            <section class="formato_section1 " >
+                <div class=" ">
+                    <label for="formato_id">Id</label>
+                    <input type="text">
+                </div>
+                <div class=" formato_desc ">
+                    <label for="">Nombre del area</label>
+                    <input type="text">
+                </div>
+            </section>
+            <section class="display_felx_row">
+                <div class=" display_felx_colum">
+                    <label for="">Nombre(s)</label>
+                    <input class="" type="text">
+                </div>
+                <div class=" display_felx_colum">
+                    <label for="">Primer Apelldio</label>
+                    <input class="" type="text">
+                </div>
+                <div class=" display_felx_colum">
+                    <label for="">Segundo Apelldio</label>
+                    <input class="" type="text">
+                </div>
+                <div class=" display_felx_colum">
+                    <label for="">Vigente</label>
+                    <select>
+                        <option value="">Seleccione</option>
+                        <option value="">Opcion 1</option>
+                    </select>
+                </div>
+            </section>
+        </fieldset>
+        <div class="display_felx_center">
+            <input class="boton" type="submit" value="Agregar">
+            <input class="boton" type="submit" value="Regresar">
+        </div>
+        <table>
             <tr>
                 <th>Id del &aacute;rea</th>
                 <th>Descripci&oacute;n del &aacute;rea</th>
                 <th>Nombre del responsable</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
                 <th>Siglas del &aacute;rea</th>
-                <th>Id del &aacute;rea dependiente</th>
                 <th>Estatus de vigencia</th>
-                <th>Modificar datos</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
             </tr>
             <tr th:each="vtctlgareas : ${catalogoAreas}">
                 <!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
@@ -38,19 +73,40 @@
                 <td th:text="${vtctlgareas.capepat}">Muestra el apellido paterno</td>
                 <td th:text="${vtctlgareas.capemat}">Muestra el apellido materno</td>
                 <td th:text="${vtctlgareas.csiglas}">Muestra las siglas del &acute;rea</td>
-                <td th:text="${vtctlgareas.nidared}">Ninguna</td>
                 <td th:text="${vtctlgareas.cvigent}">Muestra el status de vigencia</td>
+                <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                    <line x1="16" y1="5" x2="19" y2="8" />
+                </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <line x1="4" y1="7" x2="20" y2="7" />
+                    <line x1="10" y1="11" x2="10" y2="17" />
+                    <line x1="14" y1="11" x2="14" y2="17" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                </svg></td>
+                
                 <!--<td><a th:href="@{/Areas/} + ${vtctlgareas.nidarea}" th:text="Editar"/></td>-->
             </tr>
 
         </table>
-    </div>
-    <div th:if="${catalogoAreas == null}">
-        <!--or catalogoAreas.empty or areaseleccionada == null or areaseleccionada.empty-->
-        La lista de personas se encuentra vacia o a ocurrido un error en la conexi&oacute;n
-    </div>
-</div>
-<footer th:replace="layout/PlantillaHP :: footer">
-</footer>
+
+        <div th:if="${catalogoAreas == null}">
+            <!--or catalogoAreas.empty or areaseleccionada == null or areaseleccionada.empty-->
+            La lista de personas se encuentra vacia o a ocurrido un error en la conexi&oacute;n
+        </div>
+
+
+    </main>
+    <footer th:replace="layout/PlantillaHP :: footer">
+    </footer>
 </body>
+
 </html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/plantilla :: head">
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../css/Estilos.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <title>Autorizaciones De Requisiciones</title>
+</head>
+
+<body>
+    <header th:replace="layout/PlantillaHP :: header">
+    </header>
+    <article>
+        <h1>Autorizaciones De Requisiciones</h1>
+    </article>
+    <main class="contenedor">
+        <form action="">
+            <section class="display_felx_row">
+                <label for="">Usuario:Nombre del empleado que solicita la Requisición</label>
+                <label for="">Área del usuario:Coordinación de proyectos especiales</label>
+            </section>
+            <fieldset class="display_felx_row">
+                <legend>llena todos los campos</legend>
+                <div class="display_felx_colum">
+                    <label for="nidenta">Id</label>
+                    <input class="formato_input" type="text" name="nidenta" th:field="*{id.nidenta}" />
+                </div>
+                <div class="display_felx_colum">
+                    <label for="nanioea">Año </label>
+                    <input class="formato_input" type=number name="nanioea" th:field="*{id.nanioea}" />
+                </div>
+                <div class="display_felx_colum">
+                    <label for="dfecent">Fecha </label>
+                    <input class="input-text" type="date" name="dfecent" th:field="*{dfecent}" />
+                </div>
+                <div class="display_felx_colum">
+                    <label for="cstatus">Tipo Requisición</label>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option value="">Opcion 1</option>
+                    </select>
+                </div>
+                <div class="display_felx_colum">
+                    <label for="cstatus">Estado</label>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option value="">Opcion 1</option>
+                    </select>
+                </div>
+                <div class="display_felx_center">
+                    <input class="boton" type="submit" value="Agregar">
+                    <input class="boton" type="submit" value="Regresar">
+                </div>
+            </fieldset>
+            <fieldset class="">
+                <legend>Área para observaciones</legend>
+                <textarea  class="text_box" name="" id="" cols="30" rows="4"></textarea>
+            </fieldset>
+        </form>
+        <table>
+            <tr>
+                <th>Folio</th>
+                <th>Año</th>
+                <th>Fecha</th>
+                <th>Tipo Requisición</th>
+                <th>Observaciones</th>
+                <th>Estado</th>
+                <th>Editar</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2023</td>
+                <td>02/20/2023</td>
+                <td>Mensual</td>
+                <td>Aquí se debe visualizar todas las observaciones</td>
+                <td>Resgistrado</td>
+                <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                    <line x1="16" y1="5" x2="19" y2="8" />
+                </svg></td>
+            </tr>
+        </table>
+        <h3>Detalle de la Requisición</h3>
+        <fieldset class="display_felx_row">
+            <legend>llena todos los campos</legend>
+            <div class="display_felx_colum">
+                <label for="nidenta">Folio</label>
+                <input class="formato_input" type="text" name="nidenta" th:field="*{id.nidenta}" />
+            </div>
+            <div class="display_felx_colum">
+                <label for="nanioea">No </label>
+                <input class="formato_input" type=number name="nanioea" th:field="*{id.nanioea}" />
+            </div>
+            <div class="display_felx_colum">
+                <label for="dfecent">Tipo</label>
+                <select name="" id="">
+                    <option value="">Seleccione</option>
+                    <option value="">Opcion 1</option>
+                </select>
+            </div>
+            <div class="display_felx_colum">
+                <label for="cstatus">Describe del artículo</label>
+                <textarea name="" id="" cols="20" rows="1"></textarea>
+            </div>
+            <div class="display_felx_colum">
+                <label for="cstatus">Unidad de Medida</label>
+                <select name="" id="">
+                    <option value="">Seleccione</option>
+                    <option value="">Opcion 1</option>
+                </select>
+            </div>
+            <div class="display_felx_colum">
+                <label for="nidenta">Cantidad Solicitada</label>
+                <input class="formato_input" type="text" name="nidenta" th:field="*{id.nidenta}" />
+            </div>
+            <div class="display_felx_colum">
+                <label for="cstatus">Estado</label>
+                <select name="" id="">
+                    <option value="">Seleccione</option>
+                    <option value="">Opcion 1</option>
+                </select>
+            </div>
+        </fieldset>
+        <div class="display_felx_center">
+            <input class="boton" type="submit" value="Agregar">
+        </div>
+        <table>
+            <tr>
+                <th>Folio</th>
+                <th>No.</th>
+                <th>Tipo</th>
+                <th>Descripción del artículo</th>
+                <th>Unidad de Medida</th>
+                <th>Cantidad solicitada</th>
+                <th>Estado</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>Cafeteria</td>
+                <td>Azucar</td>
+                <td>Azucar</td>
+                <td>1</td>
+                <td>Registrado</td>
+                <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                    <line x1="16" y1="5" x2="19" y2="8" />
+                </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <line x1="4" y1="7" x2="20" y2="7" />
+                    <line x1="10" y1="11" x2="10" y2="17" />
+                    <line x1="14" y1="11" x2="14" y2="17" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                </svg></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>Cafeteria</td>
+                <td>Café soluble</td>
+                <td>Frasco</td>
+                <td>1</td>
+                <td>Registrado</td>
+                <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                    <line x1="16" y1="5" x2="19" y2="8" />
+                </svg></td>
+            <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <line x1="4" y1="7" x2="20" y2="7" />
+                    <line x1="10" y1="11" x2="10" y2="17" />
+                    <line x1="14" y1="11" x2="14" y2="17" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                </svg></td>
+            </tr>
+        </table>
+    </main>
+</body>
+</html>
