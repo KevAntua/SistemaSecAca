@@ -29,9 +29,7 @@ select {
     text-align: center;
     padding: 0.5rem;
 }
-input {
-    padding: 0.5rem;
-}
+
 /** Globales **/
 .contenedor {
     width: min(90%, 120rem);
@@ -100,7 +98,7 @@ h4 {
     max-width: 100%;
     height: auto;
 }
-
+/*
 @media(min-width: 768px) {
     .formato_input {
         max-width: 10rem;
@@ -109,9 +107,12 @@ h4 {
     .formato_textbox {
         max-width: 40rem;
     }
-}
+}*/
 /*Contenedor del formulario*/
-/*Botones*/
+
+/*Elementos del formulario */
+
+/*Botones para agregar y regresar*/
 .display_felx_center {
     display: flex;
     flex-direction: column;
@@ -136,7 +137,11 @@ h4 {
     text-align: center;
     height: 4rem;
 }
+.boton:hover {
+    background-color: #35A949;
+}
 /*Fin btones*/
+/*Formato para tabla*/
 table {
     background-color: white;
     text-align: left;
@@ -167,9 +172,7 @@ tr:hover td {
     /*width: 0.5rem;*/
     text-align: center;
 }
-.boton:hover {
-    background-color: 35A949;
-}
+
 @media(min-width:768px ){
     .Label_Format{
         font-size: 1.9rem;
@@ -181,31 +184,196 @@ tr:hover td {
         font-size: 2rem;
     }
 }
-.formato_section1{
-    flex-direction: column; 
-   align-items: center;
+.display_felx_row--section{
+ 
 }
-.formato_desc{
-    width: auto;
-}
-.formato_section1 div{
+.flex_column_start{
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
+
+.flex_column_start div{
+    width: 100%;
+}
+
+@media(min-width: 768px){
+   
+    .flex_column_start{
+        width: 60%;
+      align-items: flex-start;
+    }
+}
+
+
 @media(min-width: 480px){
-    .formato_section1{
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-    }
-    .formato_desc{
-        width: 90%;
+   
+    .flex_column_start{
+        align-items: flex-start;
     }
 }
+
 .text_box{
     width: 100%;
 }
 .display_flex_row_around{
     display: flex;
     justify-content: space-around;
+}
+
+/*formato generel para labels*/
+.label_form{
+display: block;
+font-weight: 700;
+padding: 1rem;
+cursor: pointer;
+}
+/*Formato labels para un id*/
+.label_form--id{
+    line-height: 2rem; 
+ }
+
+/*Fromato general para inputs*/
+.all_inputs{
+    width: 100%;
+    background: white;
+    border: 3px solid ;
+    border-radius: 3px;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    padding: 0 4.8rem 0 1 rem;
+    transition:  0.3s ease all;
+}
+@media(min-width: 768px){
+    .all_inputs--id {
+        max-width: 12rem;
+    }
+}
+
+.all_inputs:focus{
+    border: 3px solid #0075ff;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+/*Formato para los textarea*/
+textarea,select{
+    width: 100%;
+    background: white;
+    border: 3px solid ;
+    border-radius: 3px;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    padding: 0 4.8rem 0 1 rem;
+    transition:  0.3s ease all;
+}
+
+/*Efecto de borde cuando un objeto gane el foco*/
+textarea:focus{
+    border: 3px solid #0075ff;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+select:focus{
+    border: 3px solid #0075ff;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+/*Formato para mensaje de error en inputs*/
+.form_input_error{
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    display: none;
+}
+
+.form_input_error-activo{
+    display: block;
+}
+/*posicionamiento de iconos dentro de inputs*/
+.form_group--input,.form_group--desc,.form_group--select{
+    position: relative;
+    }
+   
+.form_valid_state{
+    position: absolute;
+    right: 2rem;
+    bottom: 1.3rem;
+    z-index: 100;
+    opacity: 0;
+}
+.form_group--desc
+.form_valid_state{
+    position: absolute;
+    right: unset;
+    bottom: unset;
+}
+.form_group--select
+.form_valid_state{
+position: absolute;
+right: -3rem;
+    bottom: 1rem;
+}
+/*Mensaje de error en el formulario*/
+.form_message{
+    height: 6rem;
+    line-height: 4.5rem;
+    background: #f66b60;
+    padding: 0rem 1.5rem;
+    border-radius: 3px;
+    display: none;
+}
+.form_message--activo{
+    display: block;
+}
+/*Mensaje de exito en el formulario*/
+.form_message_succes{
+    background: none;
+    font-size: 1.4rme;
+    color:#119200;
+    display: none;
+    
+}
+.form_message_succes--activo{
+    display: block;
+}
+/*Mostrar Icono de correcto*/
+.form_group--correcto 
+.form_valid_state{
+color: #1ed12d;
+opacity: 1;
+}
+/*Mostrar Icono de incorrecto*/
+.form_group--incorrecto 
+.label_form{
+    color: #bb2929;
+}
+.form_group--incorrecto
+.form_valid_state{
+    color: #bb2929;
+opacity: 1;
+}
+.form_group--incorrecto input{
+   border: 3px solid #bb2929;
+}
+.form_group--incorrecto textarea{
+   border: 3px solid #bb2929;
+}
+.form_group--incorrecto select{
+    border: 3px solid #bb2929;
+ }
+ 
+#label_vig_REA{
+    padding-top: 0.5rem;
+    padding-bottom: 0;
+}
+
+/*Iconos*/
+.Iconos{
+    font-size: 32px;
+    color: #646464;
+    cursor: pointer;
+   /* border: none;*/
 }

@@ -7,106 +7,148 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="../css/Estilos.css">
     <link rel="stylesheet" href="../../css/normalize.css">
-    <title>Areas</title>
+    <script src="https://kit.fontawesome.com/18c67b9c1e.js" crossorigin="anonymous"></script>
+    <title>Áreas</title>
 </head>
+
 <body>
     <header th:replace="layout/PlantillaHP :: header">
     </header>
     <article>
-        <h1 class="cabeceraP">Areas</h1>
+        <h1 class="cabeceraP">Áreas</h1>
     </article>
     <main class="contenedor">
-        <fieldset>
-            <section class="formato_section1 " >
-                <div class=" ">
-                    <label for="formato_id">Id</label>
-                    <input type="text">
-                </div>
-                <div class=" formato_desc ">
-                    <label for="">Nombre del area</label>
-                    <input type="text">
-                </div>
-            </section>
-            <section class="display_felx_row">
-                <div class=" display_felx_colum">
-                    <label for="">Nombre(s)</label>
-                    <input class="" type="text">
-                </div>
-                <div class=" display_felx_colum">
-                    <label for="">Primer Apelldio</label>
-                    <input class="" type="text">
-                </div>
-                <div class=" display_felx_colum">
-                    <label for="">Segundo Apelldio</label>
-                    <input class="" type="text">
-                </div>
-                <div class=" display_felx_colum">
-                    <label for="">Vigente</label>
-                    <select>
-                        <option value="">Seleccione</option>
-                        <option value="">Opcion 1</option>
-                    </select>
-                </div>
-            </section>
-        </fieldset>
-        <div class="display_felx_center">
-            <input class="boton" type="submit" value="Agregar">
-            <input class="boton" type="submit" value="Regresar">
-        </div>
-        <table>
-            <tr>
-                <th>Id del &aacute;rea</th>
-                <th>Descripci&oacute;n del &aacute;rea</th>
-                <th>Nombre del responsable</th>
-                <th>Primer Apellido</th>
-                <th>Segundo Apellido</th>
-                <th>Siglas del &aacute;rea</th>
-                <th>Estatus de vigencia</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-            <tr th:each="vtctlgareas : ${catalogoAreas}">
-                <!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
-                <td th:text="${vtctlgareas.nidarea}">Muestra el id del &aacute;rea</td>
-                <td th:text="${vtctlgareas.cdescri}">Muestra la descripci&oacute;n del &aacute;rea</td>
-                <td th:text="${vtctlgareas.cnomres}">Muestra el nombre del esponsable del &acute;rea</td>
-                <td th:text="${vtctlgareas.capepat}">Muestra el apellido paterno</td>
-                <td th:text="${vtctlgareas.capemat}">Muestra el apellido materno</td>
-                <td th:text="${vtctlgareas.csiglas}">Muestra las siglas del &acute;rea</td>
-                <td th:text="${vtctlgareas.cvigent}">Muestra el status de vigencia</td>
-                <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
-                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                    <line x1="16" y1="5" x2="19" y2="8" />
-                </svg></td>
-            <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44"
-                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <line x1="4" y1="7" x2="20" y2="7" />
-                    <line x1="10" y1="11" x2="10" y2="17" />
-                    <line x1="14" y1="11" x2="14" y2="17" />
-                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                </svg></td>
-                
-                <!--<td><a th:href="@{/Areas/} + ${vtctlgareas.nidarea}" th:text="Editar"/></td>-->
-            </tr>
+        <form id="form_UM" th:action="@{/}" method="post" th:object="${}">
+            <fieldset>
+                <section class="display_felx_row">
 
-        </table>
+                    <div id="div_id_Area" class="display_felx_colum ">
+                        <label id="label_id_Area" class=" label_form" for="input_id_Area">Id del área</label>
+                        <div id="group_id_Area" class="form_group--input">
+                            <input id="input_id_Area" class="all_inputs  all_inputs--id" type="text" name="id"
+                                placeholder="ID">
+                            <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                        </div>
+                        <p class="form_input_error">Formato no valido</p>
+                    </div>
 
-        <div th:if="${catalogoAreas == null}">
-            <!--or catalogoAreas.empty or areaseleccionada == null or areaseleccionada.empty-->
-            La lista de personas se encuentra vacia o a ocurrido un error en la conexi&oacute;n
-        </div>
+                    <div id="div_nom_area" class=" flex_column_start">
+                        <label id="label_nom_Area" class="label_form" for="input_nom_Area">Nombre del área</label>
+                        <div id="group_nom_Area" class="form_group--input ">
+                            <input id="input_nom_Area" class="all_inputs " name="Desc" type="text" placeholder="">
+                            <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                        </div>
+                        <p class="form_input_error">Nombre muy corto</p>
+                    </div>
 
+                </section>
 
+                <section class="display_felx_row">
+
+                    <div id="div_name_Area" class=" display_felx_colum">
+                        <label id="label_name_Area" class="label_form" for="input_name_Area">Nombre(s)</label>
+                        <div id="group_name_Area" class="form_group--input">
+                            <input id="input_name_Area" class="all_inputs" name="nombre" placeholder="Nombre(s)"
+                                type="text">
+                            <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                        </div>
+                        <p class="form_input_error">Formato no valido</p>
+                    </div>
+
+                    <div id="div_ap1_Area" class=" display_felx_colum">
+                        <label id="label_ap1_Area" class="label_form" for="input_ap1_Area">Primer Apelldio</label>
+                        <div id="group_ap1_Area" class="form_group--input">
+                            <input id="input_ap1_Area" class="all_inputs" type="text" name="apellidos"
+                                placeholder="Apellido">
+                            <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                        </div>
+                        <p class="form_input_error">Formato no valido</p>
+                    </div>
+
+                    <div id="div_ap2_Area" class=" display_felx_colum">
+                        <label id="label_ap2_Area" class="label_form" for="input_ap2_Area">Segundo Apelldio</label>
+                        <div id="group_ap2_Area" class="form_group--input">
+                            <input id="input_ap2_Area" class="all_inputs" name="apellidos" placeholder="Apellido"
+                                type="text">
+                            <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                        </div>
+                        <p class="form_input_error">Formato no valido</p>
+                    </div>
+
+                    <div id="div_select_Area" class=" display_felx_colum">
+                        <label label id="label_vig_Area" class="label_form" for="">Vigente</label>
+                        <div id="group_vig_Area" class="form_group--select">
+                            <select id="combo_vig_Area" name="combo">
+                                <option value="">Seleccione</option>
+                                <option value="">Vigente</option>
+                                <option value="">No vigente</option>
+                            </select>
+                            <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                        </div>
+                        <p class="form_input_error">selecione un opción valida</p>
+                    </div>
+
+                </section>
+            </fieldset>
+            <div class="display_felx_center">
+                <input class="boton" type="submit" value="Agregar">
+                <input class="boton" type="submit" value="Regresar">
+            </div>
+            <table>
+                <tr>
+                    <th>Id del &aacute;rea</th>
+                    <th>Descripci&oacute;n del &aacute;rea</th>
+                    <th>Nombre del responsable</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Siglas del &aacute;rea</th>
+                    <th>Estatus de vigencia</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr th:each="vtctlgareas : ${catalogoAreas}">
+                    <!-- Variable temporal del catalogo de areas que recibira lo que venga de catalogoAreas -->
+                    <td th:text="${vtctlgareas.nidarea}">Muestra el id del &aacute;rea</td>
+                    <td th:text="${vtctlgareas.cdescri}">Muestra la descripci&oacute;n del &aacute;rea</td>
+                    <td th:text="${vtctlgareas.cnomres}">Muestra el nombre del esponsable del &acute;rea</td>
+                    <td th:text="${vtctlgareas.capepat}">Muestra el apellido paterno</td>
+                    <td th:text="${vtctlgareas.capemat}">Muestra el apellido materno</td>
+                    <td th:text="${vtctlgareas.csiglas}">Muestra las siglas del &acute;rea</td>
+                    <td th:text="${vtctlgareas.cvigent}">Muestra el status de vigencia</td>
+                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
+                            height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                            <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                            <line x1="16" y1="5" x2="19" y2="8" />
+                        </svg></td>
+                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44"
+                            height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <line x1="4" y1="7" x2="20" y2="7" />
+                            <line x1="10" y1="11" x2="10" y2="17" />
+                            <line x1="14" y1="11" x2="14" y2="17" />
+                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                        </svg></td>
+
+                    <!--<td><a th:href="@{/Areas/} + ${vtctlgareas.nidarea}" th:text="Editar"/></td>-->
+                </tr>
+
+            </table>
+
+            <div th:if="${catalogoAreas == null}">
+                <!--or catalogoAreas.empty or areaseleccionada == null or areaseleccionada.empty-->
+                La lista de personas se encuentra vacia o a ocurrido un error en la conexi&oacute;n
+            </div>
+
+        </form>
     </main>
     <footer th:replace="layout/PlantillaHP :: footer">
     </footer>
+    <script src="../JavaScript/java.js"></script>
 </body>
 
 </html>

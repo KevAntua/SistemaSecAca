@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="../css/Estilos.css">
     <link rel="stylesheet" href="../../css/normalize.css">
+    <script src="https://kit.fontawesome.com/18c67b9c1e.js" crossorigin="anonymous"></script>
+  
     <title>Alta de unidades de medida</title>
 </head>
 
@@ -18,32 +20,58 @@
         <h1 class="">Alta de Unidades de Medida</h1>
     </article>
     <main class="contenedor">
-        <form th:action="@{/GuardarMedida}" method="post" th:object="${catalogoUniMedida}">
+        <form id="form_UM" th:action="@{/GuardarMedida}" method="post" th:object="${catalogoUniMedida}">
             <fieldset class="display_felx_row">
                 <legend>llena todos los campos</legend>
 
-                <div class="display_felx_colum">
-                    <label  class="Label_Format"  for="ncvunmd">Clave de la unidad de medida</label>
-                    <input id="dd1" class="input-text" type="text" name="ncvunmd" th:field="*{ncvunmd}" />
+                <div id="div_id_UM" class="display_felx_colum form_group">
+                    <label id="label_id_UM" class="label_form--id label_form" for="input_id_UM">ID Unidad<br>De Medida</label>
+                    <div id="group_id_UM" class="form_group--input" >
+                        <input  id="input_id_UM" class="all_inputs  all_inputs--id" type="number" name="id"
+                            th:field="*{ncvunmd}" placeholder="ID" />
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
                     </div>
+                    <p class="form_input_error">Formato no valido</p>
+                </div>
 
-                <div class="display_felx_colum">
-                    <label for="cdescrip">Descripcion&oacute;n de la medida</label>
-                    <input id="dd2" class="input-text" type="text" name="cdescrip" th:field="*{cdescrip}" />
+                <div id="div_desc_UM"  class="display_felx_colum" >
+                    <label id="label_desc_UM" class="label_form--desc label_form" for="textarea_des_UM">Descripci&oacute;n de la medida</label>
+                    <div id="group_desc_UM" class="form_group--desc" >
+                        <textarea id="textarea_des_UM" class="format_textarea format_desc" name="Desc"  cols="30" rows="2" placeholder="Descripción de la unidad de medida" th:field="*{cdescrip}"></textarea>
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
                     </div>
+                    <p class="form_input_error">Descripción muy corta</p>
+                </div>
 
-                <div class="display_felx_colum">
-                    <label for="cvigent">Estatus de vigencia</label>
-                    <input id="dd3" class="input-text" type="text" name="cvigent" th:field="*{cvigent}" />
-                   </div>
-
+                <div id="div_select_UM" class="display_felx_colum">
+                    <label id="label_vig_UM" class="label_form--select label_form" for="combo_UM">Estatus de vigencia</label>
+                    <div id="group_vig_UM" class="form_group--select" >
+                        <select id="combo_UM" name="combo" >
+                            <option value="">Seleccione</option>
+                            <option value="">Vigente</option>
+                            <option value="">No vigente</option>
+                        </select>
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">selecione un opción valida</p>
+                </div>
+                
             </fieldset>
+            <div class="form_message " id="form_message">
+                <p id="">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <b>Error:</b>Por favor llene o seleccione los campos marcados correctamente
+                </p>
+            </div>
+
+            <div class="form_group display_felx_center">
+                <button class="boton" type="submit" name="guardarMedida" value="" >Agregar </button>
+                <button class="boton" type="submit" value="">Regresar</button>
+            </div>
+            <p  id="Parrafo_M" class="form_message_succes">Datos guardados con exito</p>
         </form>
 
-        <div class="display_felx_center">
-            <input class="boton" type="submit" name="guardarMedida" value="Agregar" />
-            <input class="boton" type="submit" value="Regresar">
-        </div>
+        
         <div>
             <table>
                 <tr>
@@ -57,68 +85,34 @@
                     <td>1</td>
                     <td>Caja</td>
                     <td>Si</td>
-                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                        <line x1="16" y1="5" x2="19" y2="8" />
-                      </svg></td>
-                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44" height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <line x1="4" y1="7" x2="20" y2="7" />
-                        <line x1="10" y1="11" x2="10" y2="17" />
-                        <line x1="14" y1="11" x2="14" y2="17" />
-                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                      </svg></td>
+                    <td class="Iconos"> <i class="fa-solid fa-pen-to-square"></i> </td>
+                    <td class="Iconos"> <i class="fa-solid fa-trash-can"></i> </td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Pieza</td>
                     <td>Si</td>
-                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                        <line x1="16" y1="5" x2="19" y2="8" />
-                      </svg></td>
-                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44" height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <line x1="4" y1="7" x2="20" y2="7" />
-                        <line x1="10" y1="11" x2="10" y2="17" />
-                        <line x1="14" y1="11" x2="14" y2="17" />
-                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                      </svg></td>
+                    <td class="Iconos"> <i class="fa-solid fa-pen-to-square"></i> </td>
+                    <td class="Iconos"> <i class="fa-solid fa-trash-can"></i> </td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Kilogramo</td>
                     <td>Si</td>
-                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                        <line x1="16" y1="5" x2="19" y2="8" />
-                      </svg></td>
-                    <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44" height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <line x1="4" y1="7" x2="20" y2="7" />
-                        <line x1="10" y1="11" x2="10" y2="17" />
-                        <line x1="14" y1="11" x2="14" y2="17" />
-                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                      </svg></td>
+                    <td class="Iconos"> <i class="fa-solid fa-pen-to-square"></i> </td>
+                    <td class="Iconos"> <i class="fa-solid fa-trash-can"></i> </td>
                 </tr>
             </table>
         </div>
 
     </main>
+
     <footer th:replace="layout/PlantillaHP :: footer">
 
     </footer>
     <!--<footer th:replace="layout/plantilla :: footer"/>  -->
-
+    
+<script src="../JavaScript/java.js"></script>
 </body>
 
 </html>

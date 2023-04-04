@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="layout/plantilla :: head">
     <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet" />
@@ -9,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="../css/Estilos.css">
     <link rel="stylesheet" href="../../css/normalize.css">
+    <script src="https://kit.fontawesome.com/18c67b9c1e.js" crossorigin="anonymous"></script>
     <title>Surtimiento De Requisiciones</title>
 </head>
 
@@ -19,49 +19,83 @@
         <h1>Surtimiento De Requisiciones</h1>
     </article>
     <main class="contenedor">
-        <form action="">
+
+        <form id="form_UM" th:action="@{/}" method="post" th:object="${}">
+
+
             <section class="display_felx_row">
                 <label for="">Usuario:Nombre del empleado que solicita la Requisición</label>
                 <label for="">Área del usuario:Coordinación de proyectos especiales</label>
             </section>
+
             <fieldset class="display_felx_row">
                 <legend>llena todos los campos</legend>
-                <div class="display_felx_colum">
-                    <label for="nidenta">Folio</label>
-                    <input class="formato_input" type="text" name="nidenta" th:field="*{id.nidenta}" />
+
+                <div id="div_fol_sur" class="display_felx_colum">
+                    <label id="label_fol_Sur" class="label_form" for="nidenta">Folio</label>
+                    <div id="group_fol_Sur" class="form_group--input">
+                        <input id="input_fol_Sur" class=" all_inputs all_inputs--id" type="number" name="id" min="0"
+                            th:field="*{id.nidenta}" />
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">Formato no valido</p>
                 </div>
-                <div class="display_felx_colum">
-                    <label for="nanioea">Año </label>
-                    <input class="formato_input" type=number name="nanioea" th:field="*{id.nanioea}" />
+
+                <div id="div_year_Sur" class="display_felx_colum">
+                    <label id="label_year_Sur" class="label_form" for="nanioea">Año </label>
+                    <div id="group_year_Sur" class="form_group--input">
+                        <input id="input_year_Sur" class=" all_inputs all_inputs--id" type=number name="id" min="2019"
+                            th:field="*{id.nanioea}" />
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">Formato no valido</p>
                 </div>
-                <div class="display_felx_colum">
-                    <label for="dfecent">Fecha </label>
-                    <input class="input-text" type="date" name="dfecent" th:field="*{dfecent}" />
+
+                <div id="div_date_Sur" class="display_felx_colum">
+                    <label id="label_Sur" class="label_form" for="dfecent">Fecha </label>
+                    <div id="group_date_Sur" class="form_group--input">
+                        <input id="input_date_REA" class=" all_inputs" type="date" name="dfecent"
+                            th:field="*{dfecent}" />
+                    </div>
                 </div>
-                <div class="display_felx_colum">
-                    <label for="cstatus">Tipo Requisición</label>
-                    <select name="" id="">
-                        <option value="">Seleccione</option>
-                        <option value="">Opcion 1</option>
-                    </select>
+
+                <div id="div_tr_Sur" class="display_felx_colum">
+                    <label id="label_tr_Sur" class="label_form" for="combo_tr_Sur">Tipo Requisición</label>
+                    <div id="group_tr_Sur" class="form_group--select">
+                        <select name="combo" id="combo_tr_Sur">
+                            <option value="">Seleccione</option>
+                            <option value="">Opcion 1</option>
+                        </select>
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">selecione una opción valida</p>
                 </div>
-                <div class="display_felx_colum">
-                    <label for="cstatus">Estado</label>
-                    <select name="" id="">
-                        <option value="">Seleccione</option>
-                        <option value="">Opcion 1</option>
-                    </select>
+
+                <div id="div_state_Sur" class="display_felx_colum">
+                    <label id="label_state_Sur" class="label_form" for="combo_state_Sur">Estado</label>
+                    <div id="group_state_Sur" class="form_group--select">
+                        <select name="combo" id="combo_state_Sur">
+                            <option value="">Seleccione</option>
+                            <option value="">Opcion 1</option>
+                        </select>
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">selecione una opción valida</p>
                 </div>
+
                 <div class="display_felx_center">
                     <input class="boton" type="submit" value="Agregar">
                     <input class="boton" type="submit" value="Regresar">
                 </div>
+
             </fieldset>
             <fieldset class="">
                 <legend>Área para observaciones</legend>
-                <textarea placeholder="Área para observaciones al momento de surtir" class="text_box" name="" id="" cols="30" rows="4"></textarea>
+                <textarea placeholder="Área para observaciones al momento de surtir" class="text_box" name="" id=""
+                    cols="30" rows="4"></textarea>
             </fieldset>
         </form>
+
         <table>
             <tr>
                 <th>Folio</th>
@@ -80,59 +114,104 @@
                 <td>Aquí se debe visualizar todas las observaciones</td>
                 <td>Surtida</td>
                 <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
-                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                    <line x1="16" y1="5" x2="19" y2="8" />
-                </svg></td>
+                        height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                        <line x1="16" y1="5" x2="19" y2="8" />
+                    </svg></td>
             </tr>
         </table>
         <h3>Detalle de la Requisición</h3>
-        <fieldset class="display_felx_row">
-            <legend>llena todos los campos</legend>
-            <div class="display_felx_colum">
-                <label for="nidenta">Folio</label>
-                <input class="formato_input" type="text" name="nidenta" th:field="*{id.nidenta}" />
+
+        <form id="form_UM" th:action="@{/}" method="post" th:object="${}">
+
+            <fieldset class="display_felx_row">
+                <legend>llena todos los campos</legend>
+
+                <div id="div_fol2_Sur" class="display_felx_colum">
+                    <label id="label_fol2_Sur" class="label_form" for="nidenta">Folio</label>
+                    <div id="group_fol2_Sur" class="form_group--input">
+                        <input id="input_fol2_Sur" class="all_inputs all_inputs--id" min="0" type="number" name="id"
+                            th:field="*{id.nidenta}" />
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">Formato no valido</p>
+                </div>
+
+                <div id="div_no_Sur" class="display_felx_colum">
+                    <label id="label_no_Sur" class="label_form" for="nanioea">No </label>
+                    <div id="group_no_Sur" class="form_group--input">
+                        <input id="input_no_Sur" class="all_inputs all_inputs--id" type=number name="id"
+                            th:field="*{id.nanioea}" />
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">Formato no valido</p>
+                </div>
+
+                <div id="div_type_Sur" class="display_felx_colum">
+                    <label id="label_rype_Sur" class="label_form" for="dfecent">Tipo</label>
+                    <div id="group_type_Sur" class="form_group--select">
+                        <select name="combo" id="combo_type_Sur">
+                            <option value="">Seleccione</option>
+                            <option value="">Opcion 1</option>
+                        </select>
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">selecione un opción valida</p>
+                </div>
+
+                <div id="div_desc_Sur" class="display_felx_colum">
+                    <label id="label_desc_Sur" class="label_form" for="cstatus">Describe del artículo</label>
+                    <div id="group_desc_Sur" class="form_group--desc">
+                        <textarea name="Desc" id="textarea_desc_Sur" cols="20" rows="1"></textarea>
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">Descripción muy corta</p>
+                </div>
+
+                <div id="div_um_Sur" class="display_felx_colum">
+                    <label id="label_um_Sur" class="label_form" for="cstatus">Unidad de Medida</label>
+                    <div id="group_um_Sur" class="form_group--select">
+                        <select name="combo" id="combo_sur">
+                            <option value="">Seleccione</option>
+                            <option value="">Opcion 1</option>
+                        </select>
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">selecione un opción valida</p>
+                </div>
+
+                <div id="div_cs_Sur" class="display_felx_colum">
+                    <label id="label_Sur" class="label_form" for="nidenta">Cantidad Solicitada</label>
+                    <div id="group_cs_Sur" class="form_group--input">
+                        <input id="input_Sur" class="all_inputs all_inputs--id" type="number" min="0" name="id"
+                            th:field="*{id.nidenta}" />
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">Formato no valido</p>
+                </div>
+
+                <div id="div_est_Sur" class="display_felx_colum">
+                    <label id="label_est_Sur" class="label_form" for="cstatus">Estado</label>
+                    <div id="group_est_Sur" class="form_group--input">
+                        <select name="combo" id="combo_esta">
+                            <option value="">Seleccione</option>
+                            <option value="">Opcion 1</option>
+                        </select>
+                        <i class="form_valid_state fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <p class="form_input_error">Formato no valido</p>
+                </div>
+
+            </fieldset>
+
+            <div class="display_felx_center">
+                <input class="boton" type="submit" value="Guardar">
             </div>
-            <div class="display_felx_colum">
-                <label for="nanioea">No </label>
-                <input class="formato_input" type=number name="nanioea" th:field="*{id.nanioea}" />
-            </div>
-            <div class="display_felx_colum">
-                <label for="dfecent">Tipo</label>
-                <select name="" id="">
-                    <option value="">Seleccione</option>
-                    <option value="">Opcion 1</option>
-                </select>
-            </div>
-            <div class="display_felx_colum">
-                <label for="cstatus">Describe del artículo</label>
-                <textarea name="" id="" cols="20" rows="1"></textarea>
-            </div>
-            <div class="display_felx_colum">
-                <label for="cstatus">Unidad de Medida</label>
-                <select name="" id="">
-                    <option value="">Seleccione</option>
-                    <option value="">Opcion 1</option>
-                </select>
-            </div>
-            <div class="display_felx_colum">
-                <label for="nidenta">Cantidad Solicitada</label>
-                <input class="formato_input" type="text" name="nidenta" th:field="*{id.nidenta}" />
-            </div>
-            <div class="display_felx_colum">
-                <label for="cstatus">Estado</label>
-                <select name="" id="">
-                    <option value="">Seleccione</option>
-                    <option value="">Opcion 1</option>
-                </select>
-            </div>
-        </fieldset>
-        <div class="display_felx_center">
-            <input class="boton" type="submit" value="Guardar">
-        </div>
+
+        </form>
         <table>
             <tr>
                 <th>Folio</th>
@@ -144,7 +223,7 @@
                 <th>Cantidad Entregada</th>
                 <th>Estado</th>
                 <th>Editar</th>
-               
+
             </tr>
             <tr>
                 <td>1</td>
@@ -156,14 +235,14 @@
                 <td>1</td>
                 <td>Registrado</td>
                 <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
-                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                    <line x1="16" y1="5" x2="19" y2="8" />
-                </svg></td>
-            
+                        height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                        <line x1="16" y1="5" x2="19" y2="8" />
+                    </svg></td>
+
             </tr>
             <tr>
                 <td>1</td>
@@ -175,16 +254,21 @@
                 <td>0</td>
                 <td>Registrado</td>
                 <td><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44"
-                    height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                    <line x1="16" y1="5" x2="19" y2="8" />
-                </svg></td>
-           
+                        height="44" viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                        <line x1="16" y1="5" x2="19" y2="8" />
+                    </svg></td>
+
             </tr>
         </table>
     </main>
+    <footer>
+
+    </footer>
+    <script src="../JavaScript/java.js"></script>
 </body>
+
 </html>
